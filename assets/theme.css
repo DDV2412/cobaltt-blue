@@ -1275,15 +1275,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   overflow: hidden;
   position: relative;
 }
-.cta-inner::before {
-  content: '';
-  position: absolute;
-  width: 360px; height: 360px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(77,200,255,0.18), transparent 70%);
-  top: -100px; right: 200px;
-  filter: blur(20px);
-}
 .cta-inner h2 {
   font-family: var(--font-heading);
   font-size: 80px;
