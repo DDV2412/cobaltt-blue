@@ -84,14 +84,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 .eyebrow.secondary{
-  font-family: Montserrat;
-font-weight: 600;
-font-style: SemiBold;
-font-size: 10px;
-leading-trim: NONE;
-line-height: 100%;
-letter-spacing: 24%;
-
+  font-weight: 600;
+  font-style: 600;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 24%;
+  color: #3A4558;
+  border: none;
+  background: transparent;
 }
 .eyebrow .dot {
   width: 5px;
