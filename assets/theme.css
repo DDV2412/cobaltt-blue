@@ -1225,7 +1225,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .faq-q .plus {
   width: 28px; height: 28px;
-  border: 1px solid var(--line);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1233,6 +1232,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   flex-shrink: 0;
   font-size: 18px;
   transition: all 0.25s ease;
+  color: #3A4558;
 }
 .faq-item.open .faq-q .plus {
   color: var(--text);
