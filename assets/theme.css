@@ -2453,7 +2453,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .rs-score { grid-area: score; font-size: 56px; line-height: 1; align-self: center; }
   .rs-meta { grid-area: meta; border-right: 0; padding-right: 0; min-width: unset; align-self: center; }
   .rs-bars { grid-area: bars; max-width: 100%; }
-  .rs-action { grid-area: action; }
+  .rs-action { display: none; }
   .results-head { flex-direction: column; align-items: flex-start; gap: 16px; }
   .nav { padding: 0 20px; height: 64px; }
   .nav-logo img { height: 32px; }
