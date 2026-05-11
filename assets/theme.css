@@ -1205,7 +1205,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   cursor: pointer;
   transition: border-color var(--transition);
 }
-.faq-item:last-child { border-bottom: 1px solid var(--line-soft); }
+.faq-item:first-child { border-yop: 1px solid transparent; }
 .faq-q {
   display: flex;
   justify-content: space-between;
@@ -1223,7 +1223,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-family: inherit;
   padding: 0;
 }
-.faq-q:focus-visible { outline: 2px solid var(--blue-l); outline-offset: 4px; border-radius: 4px; }
 .faq-q .plus {
   width: 28px; height: 28px;
   border: 1px solid var(--line);
@@ -1232,13 +1231,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--blue-l);
   font-size: 18px;
   transition: all 0.25s ease;
 }
 .faq-item.open .faq-q .plus {
-  background: var(--blue);
-  border-color: var(--blue);
   color: var(--text);
   transform: rotate(45deg);
 }
