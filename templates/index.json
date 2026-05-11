@@ -13,13 +13,12 @@
       "type": "hero",
       "settings": {
         "eyebrow": "9H Professional Ceramic Formula",
-        "heading": "<p>LIQUID ARMOUR<br/>FOR YOUR CAR.</p>",
-        "heading_accent": "CAR.",
+        "heading": "LIQUID ARMOURFOR YOUR CAR.",
         "subheading": "One bottle. Professional-grade SiO₂ ceramic coating that bonds to your paint, repels everything, and shines for 5 years.",
         "product": "",
         "default_variant": 1,
         "show_price": true,
-        "btn_primary_label": "Shop Now",
+        "btn_primary_label": "Shop Now  &mdash; $89",
         "btn_secondary_label": "View All Options",
         "btn_secondary_url": "",
         "btn_secondary_scroll": "#why"
