@@ -1197,9 +1197,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .review-author .avatar {
   width: 32px; height: 32px;
   border-radius: 50%;
-  background: rgba(27,79,255,0.2);
-  border: 1px solid rgba(77,200,255,0.3);
-  color: var(--blue-l);
+  background: #0B1020;
+  border: 1px solid #4DC8FF1A;
+  color: #3A4558;
   display: flex;
   align-items: center;
   justify-content: center;
