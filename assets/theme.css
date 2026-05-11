@@ -92,6 +92,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: #3A4558;
   border: none;
   background: transparent;
+  padding: 0;
 }
 .eyebrow .dot {
   width: 5px;
