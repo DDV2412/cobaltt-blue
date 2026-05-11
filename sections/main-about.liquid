@@ -54,12 +54,8 @@
       </div>
     </div>
 
-  {%- elsif block.type == 'value' -%}
-    {%- unless forloop.first and section.blocks[forloop.index0 | minus: 1].type != 'value' -%}
-    {%- endunless -%}
-
-  {%- elsif block.type == 'stat' -%}
-    {%- comment -%}handled in stats row below{%- endcomment -%}
+  {%- comment -%}{%- endcomment -%}
+  {%- comment -%}value and stat blocks rendered in dedicated rows below{%- endcomment -%}
 
   {%- endif -%}
 {%- endfor -%}

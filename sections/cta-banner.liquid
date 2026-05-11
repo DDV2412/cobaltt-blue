@@ -7,7 +7,7 @@
         {%- if section.settings.eyebrow != blank -%}
           <div class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ section.settings.eyebrow }}</div>
         {%- endif -%}
-        <h2 id="cta-heading">{{ section.settings.heading | default: 'YOUR CAR<br/>DESERVES<br/>BETTER.' }}</h2>
+        <h2 id="cta-heading">{{ section.settings.heading | default: 'YOUR CAR DESERVES BETTER.' | newline_to_br }}</h2>
       </div>
       <div class="cta-actions">
         {%- if section.settings.btn_primary_label != blank -%}
@@ -52,10 +52,10 @@
       "default": "Limited Time — 26% OFF"
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "<p>YOUR CAR<br/>DESERVES<br/>BETTER.</p>"
+      "default": "YOUR CAR DESERVES BETTER."
     },
     {
       "type": "product",
