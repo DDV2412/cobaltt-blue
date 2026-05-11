@@ -2544,6 +2544,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .why-center .ring.r2{
     width: 100%;
     aspect-ratio: 1/1;
+    height: auto
   }
   .why-center{
     width: 100%;
@@ -2551,6 +2552,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .why-center .ring.r1{
     width: 90%;
     aspect-ratio: 1/1;
+        height: auto
+
   }
   .why-center__img{
     width: 100%
