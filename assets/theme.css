@@ -1262,7 +1262,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   max-width: 1440px;
   margin: 0 auto;
   background: #1B4FFF14;
-border: 1px solid #1B4FFF38
+  border: 1px solid #1B4FFF38
 }
 .cta-inner {
   border-radius: 26px;
@@ -1282,6 +1282,7 @@ border: 1px solid #1B4FFF38
   margin: 18px 0 0;
   letter-spacing: 0.02em;
   position: relative;
+  background: linear-gradient(135deg, #0B1840 14.14%, #080F2C 84.87%);
 }
 .cta-actions {
   display: flex;
