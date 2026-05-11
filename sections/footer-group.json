@@ -42,8 +42,10 @@
         "link_col_3"
       ],
       "settings": {
-        "show_country_selector": true,
-        "show_locale_selector": true,
+        "show_social": true,
+        "brand_desc": "Professional-grade ceramic car coating. Engineered for enthusiasts, usable by anyone.",
+        "show_country_selector": false,
+        "show_locale_selector": false,
         "show_payment_icons": true
       }
     }

@@ -61,8 +61,8 @@
       "settings": {
         "menu": "main-menu",
         "show_search": true,
-        "show_cart": true,
-        "sticky_header": true
+        "show_buy_btn": true,
+        "buy_btn_label": "Buy Now — $89"
       }
     }
   },

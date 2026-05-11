@@ -9,7 +9,9 @@
           <img src="{{ section.settings.logo | image_url: height: 40 }}" alt="{{ shop.name }}" height="40" style="margin-bottom:14px;">
         </a>
       {%- else -%}
-        <div class="name">{{ section.settings.brand_name | default: shop.name | upcase }}</div>
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}" style="display:block;margin-bottom:14px;">
+          <img src="{{ 'Cobalt-text-white-color.png' | asset_url }}" alt="{{ shop.name }}" height="32" loading="lazy">
+        </a>
       {%- endif -%}
 
       {%- if section.settings.brand_desc != blank -%}
@@ -44,35 +46,6 @@
         </div>
       {%- endif -%}
 
-      {%- if section.settings.show_newsletter -%}
-        <div class="footer-newsletter" style="margin-top:24px;">
-          {%- if section.settings.newsletter_label != blank -%}
-            <p style="font-size:11px;font-weight:700;letter-spacing:0.2em;color:var(--text-3);text-transform:uppercase;margin-bottom:10px;">{{ section.settings.newsletter_label }}</p>
-          {%- endif -%}
-          {%- form 'customer', id: 'footer-newsletter' -%}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            {%- if form.posted_successfully? -%}
-              <p class="form-success">{{ 'newsletter.success' | t | default: 'Thank you for subscribing!' }}</p>
-            {%- else -%}
-              <div class="newsletter-form" style="max-width:100%;margin:0;">
-                <label for="footer-newsletter-email" class="visually-hidden">{{ 'newsletter.label' | t | default: 'Email address' }}</label>
-                <input
-                  type="email"
-                  name="contact[email]"
-                  id="footer-newsletter-email"
-                  placeholder="{{ 'newsletter.placeholder' | t | default: 'Your email address' }}"
-                  required
-                  autocomplete="email"
-                  aria-required="true"
-                >
-                <button type="submit" class="btn btn-primary btn-pill-sm">
-                  {{ 'newsletter.button' | t | default: 'Subscribe' }}
-                </button>
-              </div>
-            {%- endif -%}
-          {%- endform -%}
-        </div>
-      {%- endif -%}
     </div>
 
     <!-- Nav columns -->
@@ -189,22 +162,6 @@
       "id": "show_social",
       "label": "Show social media icons",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "Newsletter"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_newsletter",
-      "label": "Show newsletter signup",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "newsletter_label",
-      "label": "Newsletter heading",
-      "default": "Stay in the loop"
     },
     {
       "type": "header",

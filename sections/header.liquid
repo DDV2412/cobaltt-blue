@@ -12,8 +12,8 @@
       >
     </a>
   {%- else -%}
-    <a href="{{ routes.root_url }}" class="nav-logo nav-logo--text" aria-label="{{ shop.name }}">
-      <span class="lg" style="font-size:22px;letter-spacing:0.08em;">{{ shop.name | upcase }}</span>
+    <a href="{{ routes.root_url }}" class="nav-logo" aria-label="{{ shop.name }}">
+      <img src="{{ 'Cobalt-text-white-color.png' | asset_url }}" alt="{{ shop.name }}" height="36" loading="eager">
     </a>
   {%- endif -%}
 
@@ -94,7 +94,9 @@
         <img src="{{ section.settings.logo | image_url: height: 40 }}" alt="{{ shop.name }}" height="40">
       </a>
     {%- else -%}
-      <span class="lg" style="font-size:20px;letter-spacing:0.08em;">{{ shop.name | upcase }}</span>
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        <img src="{{ 'Cobalt-text-white-color.png' | asset_url }}" alt="{{ shop.name }}" height="30" loading="eager">
+      </a>
     {%- endif -%}
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="{{ 'accessibility.close' | t }}">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
