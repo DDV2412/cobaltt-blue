@@ -761,6 +761,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .why-col.left .why-feature:first-child{
   transform: translateX(32px)
 }
+.why-col.right .why-feature:last-child{
+  transform: translateX(-16px)
+}
+.why-col.right .why-feature:first-child{
+  transform: translateX(-32px)
+}
 .why-feature:hover .icon {
   background: rgba(27,79,255,0.18);
   border-color: rgba(77,200,255,0.45);
