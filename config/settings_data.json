@@ -28,8 +28,7 @@
     "predictive_search_enabled": true,
     "predictive_search_type": "product,article,page",
     "animations_enabled": true,
-    "font_heading": "league_gothic_n4",
-    "content_for_index": []
+"content_for_index": []
   },
   "presets": {}
 }

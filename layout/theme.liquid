@@ -19,14 +19,20 @@
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}
 
-  {%- assign font_heading = settings.font_heading -%}
   {%- assign font_body = settings.font_body -%}
 
   <style>
-    {{ font_heading | font_face: font_display: 'swap' }}
+    @font-face {
+      font-family: 'League Gothic';
+      src: url('{{ 'LeagueGothic-Regular.woff2' | asset_url }}') format('woff2'),
+           url('{{ 'LeagueGothic-Regular.woff' | asset_url }}') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
     {{ font_body | font_face: font_display: 'swap' }}
     :root {
-      --font-heading: {{ font_heading.family | json }}, {{ font_heading.fallback_families }};
+      --font-heading: 'League Gothic', sans-serif;
       --font-body: {{ font_body.family | json }}, {{ font_body.fallback_families }};
     }
   </style>
