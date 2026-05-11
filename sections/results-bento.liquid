@@ -1,6 +1,6 @@
 {% comment %} Results Bento Grid Section {% endcomment %}
 
-<section class="section section-dark" id="{{ section.settings.section_id | default: 'results' }}" aria-labelledby="results-heading">
+<section class="section" id="{{ section.settings.section_id | default: 'results' }}" aria-labelledby="results-heading">
   <div class="results-head reveal">
     <h2 id="results-heading">{{ section.settings.heading | default: 'THE RESULTS SPEAK.' }}</h2>
     {%- if section.settings.btn_label != blank -%}
