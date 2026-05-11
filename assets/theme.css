@@ -2464,7 +2464,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .nav { padding: 0 20px; height: 64px; }
   .nav-logo img { height: 32px; }
   .nav-right { gap: 8px; }
-  .nav-buy-btn { display: none; }
   .cart-btn { font-size: 0; gap: 0; padding: 10px 14px; }
   .cart-btn .cart-count { font-size: 11px; }
   .footer { padding: 40px 24px 24px; }
