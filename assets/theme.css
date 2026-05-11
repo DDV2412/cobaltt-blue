@@ -1275,7 +1275,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #0B1840 14.14%, #080F2C 84.87%);
-
 }
 .cta-inner h2 {
   font-family: var(--font-heading);
