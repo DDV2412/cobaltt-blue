@@ -740,6 +740,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   gap: 16px;
   max-width: 340px;
   align-items: flex-start;
+  position: relative;
 }
 .why-col.left .why-feature { flex-direction: row; text-align: left; }
 .why-feature .icon {
@@ -753,6 +754,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   flex-shrink: 0;
   color: var(--blue);
   transition: all 0.3s ease;
+}
+.why-col .why-feature:::last-child{
+
 }
 .why-feature:hover .icon {
   background: rgba(27,79,255,0.18);
