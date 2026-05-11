@@ -1151,6 +1151,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   border-radius: 2px;
   width: 0;
   transition: width 1.2s cubic-bezier(.5,0,.2,1);
+  display: block;
 }
 .rs-bar .pct { color: var(--text-3); width: 26px; text-align: right; }
 .rs-action {     align-self: center;
