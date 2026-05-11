@@ -2540,6 +2540,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     width: 100%;
     aspect-ratio: 1/1;
   }
+  .why-center{
+    width: 100%;
+  }
   .why-center .ring .r2{
     width: 90%;
     aspect-ratio: 1/1;
