@@ -1255,7 +1255,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .faq-item:hover .faq-q .plus { border-color: rgba(77,200,255,0.45); }
 
 /* ---- FINAL CTA ---- */
-.cta { padding: 100px 64px; background: var(--bg-2); }
+.cta { padding: 0 100px 64px; background: var(--bg-2); }
 .cta-wrap {
   border-radius: var(--radius-xl);
   padding: 6px;
