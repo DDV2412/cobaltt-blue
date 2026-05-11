@@ -2404,7 +2404,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 1200px) {
   .hero h1 { font-size: 80px; }
   .hero { padding: 80px 40px 60px; }
-  .section { padding: 80px 40px; }
+  .section, .hero-2 { padding: 80px 40px; }
   .bento { grid-template-columns: 1fr 1fr 1fr; height: auto; }
   .bento .tile.featured { grid-row: span 1; grid-column: span 3; height: 320px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -2438,7 +2438,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .hero-visual { height: 340px; }
   .bottle { width: 180px; height: 340px; }
   .hero h1 { font-size: 60px; }
-  .section { padding: 60px 24px; }
+  .section, .hero-2 { padding: 60px 24px; }
   .section-head h2 { font-size: 48px; }
   .proof { flex-wrap: wrap; height: auto; padding: 24px; gap: 20px; }
   .proof-item { min-width: 40%; }
