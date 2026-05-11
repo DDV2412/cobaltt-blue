@@ -1094,11 +1094,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
   align-items: center;
-  margin-bottom: 32px;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
   flex-wrap: wrap;
+  width: 100%;
 }
 .rs-score {
   font-family: var(--font-heading);
@@ -1156,6 +1153,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   gap: 16px;
   max-width: 1440px;
   margin: 0 auto;
+  margin-bottom: 32px;
+
 }
 .review-card {
   background: rgba(236,238,244,0.02);
