@@ -444,11 +444,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .hero h1 {
   font-family: var(--font-heading);
-  font-size: 112px;
+  font-size: 88px;
   line-height: 0.9;
   margin: 24px 0;
   color: var(--text);
   letter-spacing: 0.02em;
+  font-weight: 400;
 }
 .hero h1 p { margin: 0; display: block; }
 .hero h1 .accent {
