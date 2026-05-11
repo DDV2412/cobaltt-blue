@@ -2536,6 +2536,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .proof-item { min-width: 100%; }
   .address-cards-grid { grid-template-columns: 1fr; }
   .address-name-grid { grid-template-columns: 1fr; }
+  .why-center .ring .r2{
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  .why-center .ring .r2{
+    width: 90%;
+    aspect-ratio: 1/1;
+  }
 }
 
 /* ---- MOBILE NAV DRAWER ---- */
