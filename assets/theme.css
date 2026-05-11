@@ -1185,7 +1185,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---- FAQ ---- */
 .faq {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: 80px;
   max-width: 1440px;
   margin: 0 auto;
