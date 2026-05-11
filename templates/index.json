@@ -95,8 +95,7 @@
           "settings": {
             "side": "left",
             "title": "Lab-Grade Formula",
-            "description": "70% SiO₂ — highest in any consumer kit. More silica means a harder, thicker barrier.",
-            "icon_svg": ""
+            "description": "70% SiO₂ — highest in any consumer kit. More silica means a harder, thicker barrier."
           }
         },
         "f2": {
@@ -104,8 +103,7 @@
           "settings": {
             "side": "left",
             "title": "Award-Winning",
-            "description": "Rated #1 for hydrophobicity in 2024 by AutoDetail Magazine across 18 competing products.",
-            "icon_svg": ""
+            "description": "Rated #1 for hydrophobicity in 2024 by AutoDetail Magazine across 18 competing products."
           }
         },
         "f3": {
@@ -113,8 +111,7 @@
           "settings": {
             "side": "left",
             "title": "DIY Engineered",
-            "description": "5-minute working window with clear flash indicators — professional results in your driveway.",
-            "icon_svg": ""
+            "description": "5-minute working window with clear flash indicators — professional results in your driveway."
           }
         },
         "f4": {
@@ -122,8 +119,7 @@
           "settings": {
             "side": "right",
             "title": "5-Year Protection",
-            "description": "Ceramic network bonds at the molecular level — won't wash off or degrade for 5+ years.",
-            "icon_svg": ""
+            "description": "Ceramic network bonds at the molecular level — won't wash off or degrade for 5+ years."
           }
         },
         "f5": {
@@ -131,8 +127,7 @@
           "settings": {
             "side": "right",
             "title": "Eco-Responsible",
-            "description": "Zero VOCs, biodegradable packaging. Safe for your car, your driveway, and the environment.",
-            "icon_svg": ""
+            "description": "Zero VOCs, biodegradable packaging. Safe for your car, your driveway, and the environment."
           }
         },
         "f6": {
@@ -140,8 +135,7 @@
           "settings": {
             "side": "right",
             "title": "Lifetime Support",
-            "description": "Every purchase includes lifetime expert support via video, chat, or email.",
-            "icon_svg": ""
+            "description": "Every purchase includes lifetime expert support via video, chat, or email."
           }
         }
       },
