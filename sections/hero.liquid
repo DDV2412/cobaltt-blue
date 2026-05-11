@@ -43,7 +43,7 @@
           >
             {{ section.settings.btn_primary_label }}
             {%- if section.settings.show_price -%}
-              &mdash; <span id="heroPrice">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
+            <span id="heroPrice">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
             {%- endif -%}
             <span class="arrow" aria-hidden="true">↗</span>
           </button>
