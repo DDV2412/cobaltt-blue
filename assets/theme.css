@@ -949,11 +949,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .step {
   position: relative;
-  background: var(--bg-3);
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  overflow: hidden;
+  padding-top: 84px;
   height: 100%;
 }
 .step .num {
