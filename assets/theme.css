@@ -951,6 +951,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   padding-top: 84px;
   height: 100%;
+  max-width: 180px;
 }
 .step .num {
   position: absolute;
