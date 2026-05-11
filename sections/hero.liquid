@@ -8,13 +8,8 @@
         <div class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ section.settings.eyebrow }}</div>
       {%- endif -%}
 
-      {%- if section.settings.heading != blank -%}
-        {%- assign heading_html = section.settings.heading -%}
-        {%- if section.settings.heading_accent != blank -%}
-          {%- assign accent_wrapped = '<span class="accent">' | append: section.settings.heading_accent | append: '</span>' -%}
-          {%- assign heading_html = heading_html | replace: section.settings.heading_accent, accent_wrapped -%}
-        {%- endif -%}
-        <h1>{{ heading_html }}</h1>
+      {%- if section.settings.heading != blank -%}        
+        <h1>{{ section.settings.heading }}</h1>
       {%- endif -%}
 
       {%- if section.settings.subheading != blank -%}
