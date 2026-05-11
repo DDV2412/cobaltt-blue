@@ -1097,7 +1097,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 32px;
-  
+  grid-column: span 2 / span 2;
 }
 .rs-score {
   font-family: var(--font-heading);
@@ -1139,7 +1139,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transition: width 1.2s cubic-bezier(.5,0,.2,1);
 }
 .rs-bar .pct { color: var(--text-3); width: 26px; text-align: right; }
-.rs-action { flex-shrink: 0; }
+.rs-action {     align-self: center;
+    justify-content: end;
+    align-items: end;
+    display: flex; }
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2447,6 +2450,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     gap: 16px 20px;
     align-items: start;
     padding: 20px;
+    grid-column: span 1 / span 1;
   }
   .rs-score { grid-area: score; font-size: 56px; line-height: 1; align-self: center; }
   .rs-meta { grid-area: meta; border-right: 0; padding-right: 0; min-width: unset; align-self: center; }
