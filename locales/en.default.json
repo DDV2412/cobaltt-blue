@@ -7,12 +7,16 @@
       "no_results": "No results for \"{{ terms }}\"",
       "placeholder": "Search products, articles...",
       "submit": "Search",
-      "close": "Close search"
+      "close": "Close search",
+      "title": "Search",
+      "results_count": "{{ count }} results found",
+      "start_typing": "Start typing to search…"
     },
     "pagination": {
       "previous": "Previous",
       "next": "Next",
-      "page": "Page {{ number }}"
+      "page": "Page {{ number }}",
+      "label": "Pagination"
     },
     "password_page": {
       "login_form_heading": "Enter store using password",
@@ -20,7 +24,11 @@
       "login_form_password_placeholder": "Your password",
       "login_form_submit": "Enter",
       "login_form_error": "Wrong password. Please try again.",
-      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}",
+      "title": "Opening Soon",
+      "error": "Wrong password. Please try again.",
+      "password_label": "Password",
+      "password_placeholder": "Your password"
     },
     "meta": {
       "tags": "Tagged {{ tags }}",
@@ -30,14 +38,26 @@
       "title": "Page not found",
       "subtext": "The page you requested does not exist.",
       "link": "Go back home",
-      "search_link": "Try searching"
+      "search_link": "Try searching",
+      "home": "Go Home"
     },
     "continue_shopping": "Continue shopping",
     "loading": "Loading...",
     "or": "or",
     "close": "Close",
-    "share": "Share",
-    "required": "Required"
+    "share": {
+      "title": "Share",
+      "twitter": "Share on Twitter",
+      "facebook": "Share on Facebook",
+      "copy_link": "Copy link"
+    },
+    "required": "Required",
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "footer": {
+      "copyright": "All rights reserved."
+    }
   },
 
   "sections": {
@@ -50,7 +70,8 @@
       "search": "Search"
     },
     "announcement_bar": {
-      "message": "Welcome to our store"
+      "message": "Welcome to our store",
+      "announcement": "Announcement"
     },
     "footer": {
       "copyright": "&copy; {{ year }} {{ shop_name }}. All rights reserved.",
@@ -64,7 +85,9 @@
       "order_note": "Order special instructions",
       "order_note_placeholder": "How can we help you?",
       "subtotal": "Subtotal",
-      "shipping": "Shipping and taxes calculated at checkout"
+      "shipping": "Shipping and taxes calculated at checkout",
+      "cart_error": "There was an error updating your cart.",
+      "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart."
     },
     "newsletter": {
       "success": "Thanks for subscribing!"
@@ -90,7 +113,28 @@
       "articles": "Articles",
       "pages": "Pages",
       "no_results": "No results for \"{{ terms }}\""
+    },
+    "reviews": {
+      "based_on": "Based on",
+      "verified_reviews": "verified reviews"
+    },
+    "collection_template": {
+      "filters": "Filters",
+      "from": "From",
+      "min_price": "Minimum price",
+      "to": "To",
+      "max_price": "Maximum price",
+      "clear_filter": "Clear",
+      "clear_all": "Clear all filters",
+      "empty": "No products found in this collection."
     }
+  },
+
+  "newsletter": {
+    "success": "Thank you! Check your inbox.",
+    "label": "Email address",
+    "placeholder": "Your email address",
+    "button": "Subscribe"
   },
 
   "products": {
@@ -110,7 +154,11 @@
         "regular_price": "Regular price",
         "sale_price": "Sale price",
         "unit_price": "Unit price",
-        "from_text": "From"
+        "from_text": "From",
+        "from_price_html": "From {{ price }}",
+        "compare_at_price": "Compare at price",
+        "save": "Save",
+        "include_taxes": "Tax included"
       },
       "share": "Share",
       "share_on_facebook": "Share on Facebook",
@@ -118,9 +166,17 @@
       "copy_link": "Copy link",
       "link_copied": "Link copied!",
       "description": "Description",
+      "vendor": "Vendor",
+      "sku": "SKU",
+      "type": "Type",
+      "media": {
+        "thumbnails": "Product images",
+        "load_image": "Load image {{ index }}"
+      },
       "pickup_availability": {
         "available": "Available for pickup",
         "not_available": "Not available for pickup",
+        "unavailable": "Not available for pickup",
         "refresh": "Check in store",
         "pick_up_available": "Pickup available at {{ location_name }}",
         "pick_up_tomorrow": "Pickup available tomorrow",
@@ -156,7 +212,19 @@
       "note_placeholder": "Add a note to your order...",
       "item_removed": "Item removed",
       "error": "There was an error updating your cart."
-    }
+    },
+    "title": "Your cart",
+    "empty": "Your cart is currently empty.",
+    "subtotal": "Subtotal",
+    "savings": "Savings",
+    "total": "Total",
+    "checkout": "Check out",
+    "taxes_included": "Tax included. Shipping and discounts calculated at checkout.",
+    "taxes_and_shipping_at_checkout": "Shipping & taxes calculated at checkout",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "remove": "Remove",
+    "note": "Order note"
   },
 
   "customer": {
@@ -165,10 +233,11 @@
       "email": "Email",
       "password": "Password",
       "submit": "Sign in",
+      "sign_in": "Sign in",
       "forgot_password": "Forgot your password?",
       "no_account": "New customer?",
       "create_account": "Create an account",
-      "guest_title": "Continue as guest",
+      "guest_title": "New customer? Start here",
       "guest_subtitle": "You can create an account after checkout.",
       "guest_submit": "Continue as guest"
     },
@@ -179,7 +248,8 @@
       "email": "Email",
       "password": "Password",
       "submit": "Create account",
-      "login_html": "Already have an account? {{ link }}"
+      "login_html": "Already have an account? {{ link }}",
+      "login_account": "Already have an account?"
     },
     "account": {
       "title": "My account",
@@ -193,7 +263,18 @@
       "payment_status": "Payment status",
       "fulfillment_status": "Fulfillment status",
       "total": "Total",
-      "return": "Return to account"
+      "return": "Return to account",
+      "view_addresses": "Manage addresses",
+      "follow": "Follow on Shop"
+    },
+    "orders": {
+      "title": "Order history",
+      "order_number": "Order number",
+      "date": "Date",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
     },
     "order": {
       "title": "Order {{ name }}",
@@ -274,6 +355,18 @@
     },
     "general": {
       "back_to_blog": "Back to blog"
+    },
+    "comments": {
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      },
+      "leave_a_comment": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Comment",
+      "post": "Post comment",
+      "success": "Comment submitted successfully."
     }
   },
 
@@ -288,6 +381,46 @@
     "previous_slide": "Previous slide",
     "next_slide": "Next slide",
     "navigation_label": "Navigation",
-    "scroll_to_top": "Scroll to top"
+    "scroll_to_top": "Scroll to top",
+    "breadcrumbs": "Breadcrumb navigation",
+    "nav": {
+      "main_menu": "Main menu",
+      "open_mobile_menu": "Open mobile menu",
+      "mobile_menu": "Mobile navigation"
+    }
+  },
+
+  "collections": {
+    "general": {
+      "title": "Collections",
+      "items_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "sorting": {
+      "title": "Sort by"
+    }
+  },
+
+  "contact": {
+    "form": {
+      "post_success": "Thanks for getting in touch! We'll get back to you soon.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message",
+      "phone": "Phone",
+      "subject": "Subject"
+    }
+  },
+
+  "localization": {
+    "country_label": "Country/Region",
+    "language_label": "Language"
+  },
+
+  "onboarding": {
+    "product_title": "Example product title"
   }
 }
