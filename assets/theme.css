@@ -1191,8 +1191,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: flex;
   gap: 12px;
   align-items: center;
-  border-top: 1px solid var(--line-soft);
-  padding-top: 16px;
 }
 .review-author .avatar {
   width: 32px; height: 32px;
