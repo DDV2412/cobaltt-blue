@@ -450,6 +450,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--text);
   letter-spacing: 0.02em;
   font-weight: 400;
+  max-width: 460px;
 }
 .hero h1 p { margin: 0; display: block; }
 .hero h1 .accent {
