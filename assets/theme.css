@@ -2448,7 +2448,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     gap: 16px 20px;
     align-items: start;
     padding: 20px;
-    grid-column: span 1 / span 1;
+    grid-column: none;
   }
   .rs-score { grid-area: score; font-size: 56px; line-height: 1; align-self: center; }
   .rs-meta { grid-area: meta; border-right: 0; padding-right: 0; min-width: unset; align-self: center; }
