@@ -1,0 +1,71 @@
+{% comment %} Related Product Recommendations {% endcomment %}
+
+<div id="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}">
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <section class="related-products" aria-labelledby="related-heading">
+      <div style="max-width:1312px;margin:0 auto;">
+        <h2 id="related-heading">{{ section.settings.heading | default: 'You May Also Like' }}</h2>
+        <div class="products-grid">
+          {%- for product in recommendations.products -%}
+            {%- render 'card-product', card_product: product, show_vendor: section.settings.show_vendor -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+<script>
+(function() {
+  var container = document.getElementById('product-recommendations');
+  if (!container) return;
+  var url = container.dataset.url;
+  fetch(url)
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var inner = doc.querySelector('#product-recommendations');
+      if (inner && inner.innerHTML.trim()) {
+        container.innerHTML = inner.innerHTML;
+      }
+    })
+    .catch(function() {});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "tag": "section",
+  "class": "section-product-recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You May Also Like"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show product vendor",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product recommendations"
+    }
+  ]
+}
+{% endschema %}

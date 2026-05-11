@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "vendor" },
+        "title": { "type": "title" },
+        "price": { "type": "price" },
+        "installments": { "type": "installments" },
+        "variant_picker": { "type": "variant_picker" },
+        "quantity": { "type": "quantity" },
+        "buy_buttons": { "type": "buy_buttons" },
+        "pickup": { "type": "pickup_availability" },
+        "description": { "type": "description" },
+        "share": { "type": "share" }
+      },
+      "block_order": ["vendor", "title", "price", "installments", "variant_picker", "quantity", "buy_buttons", "pickup", "description", "share"],
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You May Also Like",
+        "products_count": 4
+      }
+    }
+  },
+  "order": ["main-product", "product-recommendations"]
+}

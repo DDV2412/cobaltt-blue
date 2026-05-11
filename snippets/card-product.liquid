@@ -1,0 +1,73 @@
+{% comment %}
+  Renders a product card.
+  Usage: {% render 'card-product', card_product: product, show_vendor: false %}
+{% endcomment %}
+
+{%- if card_product != blank -%}
+  {%- assign card_url = card_product.url -%}
+  {%- assign card_image = card_product.featured_image -%}
+  {%- assign on_sale = false -%}
+  {%- if card_product.compare_at_price > card_product.price -%}
+    {%- assign on_sale = true -%}
+  {%- endif -%}
+  {%- assign sold_out = true -%}
+  {%- if card_product.available -%}
+    {%- assign sold_out = false -%}
+  {%- endif -%}
+
+  <a
+    href="{{ card_url }}"
+    class="card-product"
+    aria-label="{{ card_product.title }}"
+  >
+    <div class="card-product__media">
+      {%- if card_image != blank -%}
+        <img
+          src="{{ card_image | image_url: width: 500 }}"
+          alt="{{ card_image.alt | default: card_product.title | escape }}"
+          width="500"
+          height="{{ 500 | divided_by: card_image.aspect_ratio | round }}"
+          loading="lazy"
+          sizes="(min-width: 1200px) 280px, (min-width: 768px) 33vw, 50vw"
+          srcset="
+            {{ card_image | image_url: width: 300 }} 300w,
+            {{ card_image | image_url: width: 500 }} 500w,
+            {{ card_image | image_url: width: 700 }} 700w
+          "
+        >
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+
+      {%- if on_sale -%}
+        <span class="card-product__badge" aria-label="{{ 'products.product.price.save' | t }}">
+          {{ 'products.product.on_sale' | t | default: 'Sale' }}
+        </span>
+      {%- elsif sold_out -%}
+        <span class="card-product__badge" style="background:var(--text-3);">
+          {{ 'products.product.sold_out' | t | default: 'Sold Out' }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <div class="card-product__info">
+      {%- if show_vendor and card_product.vendor != blank -%}
+        <p class="product-vendor">{{ card_product.vendor }}</p>
+      {%- endif -%}
+      <h3 class="card-product__title">{{ card_product.title | escape }}</h3>
+      <div class="card-product__price">
+        {%- render 'price', product: card_product -%}
+      </div>
+    </div>
+  </a>
+{%- else -%}
+  <div class="card-product card-product--placeholder">
+    <div class="card-product__media">
+      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+    <div class="card-product__info">
+      <h3 class="card-product__title">{{ 'onboarding.product_title' | t }}</h3>
+      <div class="card-product__price">{{ 1999 | money }}</div>
+    </div>
+  </div>
+{%- endif -%}

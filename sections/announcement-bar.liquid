@@ -1,0 +1,57 @@
+{% comment %} Announcement Bar {% endcomment %}
+
+{%- if section.settings.show_announcement -%}
+<div class="announce" role="banner" aria-label="{{ 'sections.announcement_bar.announcement' | t }}">
+  <div class="announce-track" id="announceTrack" aria-hidden="true">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'announcement' -%}
+        <span {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}· &nbsp;&nbsp;{%- endif -%}
+          {{ block.settings.text }}
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "section-announcement-bar",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free Shipping on Orders Over $60"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "announcement", "settings": { "text": "Free Shipping on Orders Over $60" } },
+        { "type": "announcement", "settings": { "text": "30-Day Satisfaction Guarantee" } },
+        { "type": "announcement", "settings": { "text": "9H Professional Grade" } },
+        { "type": "announcement", "settings": { "text": "Free Lifetime Support" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

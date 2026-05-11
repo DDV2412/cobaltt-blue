@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main-list-collections": {
+      "type": "main-list-collections",
+      "settings": {
+        "collections_per_page": 12
+      }
+    }
+  },
+  "order": ["main-list-collections"]
+}

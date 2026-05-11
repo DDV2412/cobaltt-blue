@@ -1,0 +1,176 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "block1": { "type": "announcement", "settings": { "text": "Free Shipping on Orders Over $60" } },
+        "block2": { "type": "announcement", "settings": { "text": "30-Day Satisfaction Guarantee" } },
+        "block3": { "type": "announcement", "settings": { "text": "9H Professional Grade" } },
+        "block4": { "type": "announcement", "settings": { "text": "Free Lifetime Support" } }
+      },
+      "block_order": ["block1", "block2", "block3", "block4"],
+      "settings": { "show_announcement": true }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "9H Professional Ceramic Formula",
+        "heading": "<p>LIQUID ARMOUR<br/>FOR YOUR <span class=\"accent\">CAR.</span></p>",
+        "subheading": "One bottle. Professional-grade SiO₂ ceramic coating that bonds to your paint, repels everything, and shines for 5 years.",
+        "show_price": true,
+        "btn_primary_label": "Shop Now",
+        "btn_secondary_label": "View All Options",
+        "btn_secondary_scroll": "#why"
+      }
+    },
+    "proof-bar": {
+      "type": "proof-bar",
+      "blocks": {
+        "stat1": { "type": "stat", "settings": { "value": "4.9", "show_star": true, "label": "Avg Rating" } },
+        "stat2": { "type": "stat", "settings": { "value": "0", "animate_count": true, "count_value": 14200, "label": "Cars Protected" } },
+        "stat3": { "type": "stat", "settings": { "value": "9H", "label": "Hardness" } },
+        "stat4": { "type": "stat", "settings": { "value": "5 YR", "label": "Protection Life" } },
+        "stat5": { "type": "stat", "settings": { "value": "110°", "label": "Contact Angle" } }
+      },
+      "block_order": ["stat1", "stat2", "stat3", "stat4", "stat5"],
+      "settings": {}
+    },
+    "why-choose": {
+      "type": "why-choose",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "side": "left", "title": "Lab-Grade Formula", "description": "70% SiO₂ — highest in any consumer kit. More silica means a harder, thicker barrier." } },
+        "f2": { "type": "feature", "settings": { "side": "left", "title": "Award-Winning", "description": "Rated #1 for hydrophobicity in 2024 by AutoDetail Magazine across 18 competing products." } },
+        "f3": { "type": "feature", "settings": { "side": "left", "title": "DIY Engineered", "description": "5-minute working window with clear flash indicators — professional results in your driveway." } },
+        "f4": { "type": "feature", "settings": { "side": "right", "title": "5-Year Protection", "description": "Ceramic network bonds at the molecular level — won't wash off or degrade for 5+ years." } },
+        "f5": { "type": "feature", "settings": { "side": "right", "title": "Eco-Responsible", "description": "Zero VOCs, biodegradable packaging. Safe for your car, your driveway, and the environment." } },
+        "f6": { "type": "feature", "settings": { "side": "right", "title": "Lifetime Support", "description": "Every purchase includes lifetime expert support via video, chat, or email." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {
+        "section_id": "why",
+        "eyebrow": "The Cobalt Difference",
+        "heading": "WHY CHOOSE COBALT BLUE",
+        "subheading": "We didn't just bottle a coating. We spent three years engineering a formula that outperforms on every metric that matters."
+      }
+    },
+    "results-bento": {
+      "type": "results-bento",
+      "blocks": {
+        "t1": { "type": "stat_tile", "settings": { "value": "9H", "sublabel": "Hardness", "detail": "Pencil-scale paint hardness — repels swirl marks and rock chips.", "show_orb": true } },
+        "t2": { "type": "stat_tile", "settings": { "value": "5YR", "sublabel": "Year Protection", "badge": "DIY FORMULA", "blue_bg": true, "show_orb": false } },
+        "t3": { "type": "stat_tile", "settings": { "value": "110°", "sublabel": "Contact Angle", "detail": "Water contact angle. Self-cleaning hydrophobic barrier.", "show_orb": false } },
+        "t4": { "type": "stat_tile", "settings": { "value": "70%", "sublabel": "SiO₂ · Silica concentration", "detail": "Highest SiO₂ concentration of any consumer ceramic kit.", "show_orb": true, "orb_cyan": true } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "section_id": "results",
+        "heading": "THE RESULTS SPEAK.",
+        "btn_label": "View Full Gallery",
+        "featured_caption_title": "UNTOUCHED VS COATED",
+        "featured_caption_text": "Same panel, same day. Left untreated, right with two layers of Cobalt Blue. Eight months of weather, untouched."
+      }
+    },
+    "how-to-apply": {
+      "type": "how-to-apply",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "number": "01", "title": "WASH &\nDECONTAMINATE", "description": "Thoroughly wash the vehicle to remove dirt and grease. Use an iron remover and clay bar to eliminate bonded contaminants." } },
+        "s2": { "type": "step", "settings": { "number": "02", "title": "POLISH\n(IF NEEDED)", "description": "For best results, lightly polish with a DA polisher to remove swirl marks and create a clean base for ceramic bonding." } },
+        "s3": { "type": "step", "settings": { "number": "03", "title": "APPLY THE\nCOATING", "description": "Apply a few drops onto the suede applicator. Work panel by panel in cross-hatch motions. Allow 3–5 minutes for flash indicator." } },
+        "s4": { "type": "step", "settings": { "number": "04", "title": "BUFF & CURE", "description": "Buff off with microfibre cloth. Allow 24h before water contact, 7 days for full 9H cure. Protected for years." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "section_id": "apply",
+        "eyebrow": "Application Guide",
+        "heading": "FOUR STEPS TO<br>PERFECT COAT",
+        "subheading": "No special tools required. Achieve showroom results in your own driveway.",
+        "steps_per_row": 3
+      }
+    },
+    "shield-cta": {
+      "type": "shield-cta",
+      "settings": {
+        "eyebrow": "Premium Protective Coatings",
+        "line1": "SHIELD",
+        "line2": "YOUR RIDE.",
+        "description": "Industry-leading ceramic coatings, PPF, and paint protection engineered for maximum gloss, durability, and value retention. Your car deserves nothing less.",
+        "btn_primary_label": "Shop Now",
+        "btn_secondary_label": "View All Options",
+        "btn_secondary_scroll": "#results",
+        "angle_label": "110° CONTACT ANGLE"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "rating": 5, "date": "MAR 2025", "title": "UNBELIEVABLE GLOSS DEPTH", "quote": "\"The coating on my old Porsche looked like glass. Two years on it still beads water like the day I applied it. Worth every penny.\"", "author_initials": "JM", "author_name": "JAMES M.", "car": "Porsche 911 Carrera S" } },
+        "r2": { "type": "review", "settings": { "rating": 5, "date": "FEB 2025", "title": "FINALLY A DIY COAT THAT WORKS", "quote": "\"I was sceptical doing this myself but the instructions were so clear. Turned out absolutely perfect. My AMG looks like it just left the showroom.\"", "author_initials": "SR", "author_name": "SOFIA R.", "car": "Mercedes AMG C63" } },
+        "r3": { "type": "review", "settings": { "rating": 5, "date": "JAN 2025", "title": "TRIED 4 BRANDS. THIS WINS.", "quote": "\"I tried Gtechniq, CarPro, and others. Cobalt Blue beats all of them on water contact angle. The gloss enhancement is something else.\"", "author_initials": "AK", "author_name": "ALEX K.", "car": "BMW M4 Competition" } }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {
+        "section_id": "reviews",
+        "heading": "WHAT THEY SAY",
+        "show_summary": true,
+        "avg_score": "4.9",
+        "review_count": 847,
+        "bar_values": "87,9,3,1,0",
+        "all_reviews_label": "All 847 Reviews"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq1": { "type": "faq_item", "settings": { "question": "How is this different from wax or sealant?", "answer": "<p>Wax and sealants sit on top of paint and wash off within 3–6 months. Ceramic coating chemically bonds to the clear-coat, creating a hard, hydrophobic, UV-resistant layer that lasts years.</p>" } },
+        "faq2": { "type": "faq_item", "settings": { "question": "Do I need to paint-correct first?", "answer": "<p>Ceramic coating will lock in whatever condition the paint is in. If your paint has swirl marks, we recommend a light polish first.</p>" } },
+        "faq3": { "type": "faq_item", "settings": { "question": "What vehicles can I use this on?", "answer": "<p>Cobalt Blue works on all automotive paints including single-stage, basecoat/clearcoat, matte, and satin finishes.</p>" } },
+        "faq4": { "type": "faq_item", "settings": { "question": "How many vehicles does one bottle cover?", "answer": "<p>The 50ml kit covers up to 3 vehicles. The 100ml Pro covers up to 7, and the 200ml Bundle covers up to 15.</p>" } },
+        "faq5": { "type": "faq_item", "settings": { "question": "What's your return policy?", "answer": "<p>We offer a 30-day satisfaction guarantee. Contact us within 30 days for a full refund — no questions asked.</p>" } }
+      },
+      "block_order": ["faq1", "faq2", "faq3", "faq4", "faq5"],
+      "settings": {
+        "section_id": "faq",
+        "eyebrow": "Got Questions?",
+        "heading": "<p>FREQUENTLY<br/>ASKED</p>",
+        "subheading": "Everything you need to know before you buy.",
+        "btn_label": "Contact Support",
+        "open_first": true
+      }
+    },
+    "cta-banner": {
+      "type": "cta-banner",
+      "settings": {
+        "eyebrow": "Limited Time — 26% OFF",
+        "heading": "<p>YOUR CAR<br/>DESERVES<br/>BETTER.</p>",
+        "btn_primary_label": "Shop Now",
+        "btn_secondary_label": "View All Options",
+        "btn_secondary_scroll": "#why",
+        "fine_print": "Free shipping · 30-day guarantee"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Stay in the know",
+        "heading": "JOIN THE CLUB",
+        "subheading": "Get exclusive tips, early access to new products, and members-only discounts.",
+        "placeholder": "Your email address",
+        "btn_label": "Subscribe",
+        "disclaimer": "No spam. Unsubscribe anytime."
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "hero",
+    "proof-bar",
+    "why-choose",
+    "results-bento",
+    "how-to-apply",
+    "shield-cta",
+    "reviews",
+    "faq",
+    "cta-banner",
+    "newsletter"
+  ]
+}

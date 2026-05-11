@@ -1,0 +1,188 @@
+{% comment %} Results Bento Grid Section {% endcomment %}
+
+<section class="section section-dark" id="{{ section.settings.section_id | default: 'results' }}" aria-labelledby="results-heading">
+  <div class="results-head reveal">
+    <h2 id="results-heading">{{ section.settings.heading | default: 'THE RESULTS SPEAK.' }}</h2>
+    {%- if section.settings.btn_label != blank -%}
+      <a class="btn btn-ghost btn-pill-sm" href="{{ section.settings.btn_url | default: '#' }}">
+        {{ section.settings.btn_label }} →
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="bento reveal">
+    <!-- Featured tile -->
+    {%- if section.settings.featured_image != blank -%}
+      <div
+        class="tile featured"
+        style="background-image: url('{{ section.settings.featured_image | image_url: width: 1240 }}');"
+        role="img"
+        aria-label="{{ section.settings.featured_caption_title }}"
+      >
+        <div class="caption">
+          {%- if section.settings.featured_caption_title != blank -%}
+            <h3>{{ section.settings.featured_caption_title }}</h3>
+          {%- endif -%}
+          {%- if section.settings.featured_caption_text != blank -%}
+            <p>{{ section.settings.featured_caption_text }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="tile featured" style="background: var(--bg-3);">
+        <div class="caption">
+          <h3>{{ section.settings.featured_caption_title | default: 'UNTOUCHED VS COATED' }}</h3>
+          <p>{{ section.settings.featured_caption_text | default: 'Same panel, same day. Eight months of weather, untouched.' }}</p>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <!-- Stat tiles -->
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'stat_tile' -%}
+        <div class="tile {% if block.settings.blue_bg %}tile-blue{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.show_orb -%}
+            <div class="tile-orb {% if block.settings.orb_cyan %}cyan{% endif %}" aria-hidden="true"></div>
+          {%- endif -%}
+          {%- if block.settings.badge != blank -%}
+            <div class="tile-badge">{{ block.settings.badge }}</div>
+          {%- endif -%}
+          <div class="tile-val" aria-label="{{ block.settings.value }} {{ block.settings.sublabel }}">
+            {{ block.settings.value }}
+          </div>
+          {%- if block.settings.detail != blank -%}
+            <div class="tile-detail">{{ block.settings.detail }}</div>
+          {%- endif -%}
+          {%- if block.settings.sublabel != blank -%}
+            <div class="tile-sublabel">{{ block.settings.sublabel }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Results bento",
+  "tag": "section",
+  "class": "section-results-bento",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "results"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE RESULTS SPEAK."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label",
+      "default": "View Full Gallery"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Featured tile"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured image (before/after)"
+    },
+    {
+      "type": "text",
+      "id": "featured_caption_title",
+      "label": "Caption heading",
+      "default": "UNTOUCHED VS COATED"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_caption_text",
+      "label": "Caption text",
+      "default": "Same panel, same day. Left untreated, right with two layers of Cobalt Blue. Eight months of weather, untouched."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_tile",
+      "name": "Stat tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "9H"
+        },
+        {
+          "type": "text",
+          "id": "sublabel",
+          "label": "Sub-label",
+          "default": "Hardness"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail text"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text"
+        },
+        {
+          "type": "checkbox",
+          "id": "blue_bg",
+          "label": "Blue gradient background",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_orb",
+          "label": "Show orb decoration",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "orb_cyan",
+          "label": "Cyan orb variant",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results bento",
+      "blocks": [
+        {
+          "type": "stat_tile",
+          "settings": { "value": "9H", "sublabel": "Hardness", "detail": "Pencil-scale paint hardness — repels swirl marks and rock chips.", "show_orb": true }
+        },
+        {
+          "type": "stat_tile",
+          "settings": { "value": "5YR", "sublabel": "Year Protection", "badge": "DIY FORMULA", "blue_bg": true, "show_orb": false }
+        },
+        {
+          "type": "stat_tile",
+          "settings": { "value": "110°", "sublabel": "Contact Angle", "detail": "Water contact angle. Self-cleaning hydrophobic barrier.", "show_orb": false }
+        },
+        {
+          "type": "stat_tile",
+          "settings": { "value": "70%", "sublabel": "SiO₂ · Silica concentration", "detail": "Highest SiO₂ concentration of any consumer ceramic kit.", "show_orb": true, "orb_cyan": true }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {%- render 'seo' -%}
+
+  <title>
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  {{ content_for_header }}
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    if (Shopify.designMode) { document.documentElement.classList.add('shopify-design-mode'); }
+  </script>
+</head>
+
+<body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+
+  <a class="skip-to-content-link" href="#MainContent">
+    {{ 'accessibility.skip_to_content' | t }}
+  </a>
+
+  {%- sections 'header-group' -%}
+
+  <main id="MainContent" class="main-content" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {%- sections 'footer-group' -%}
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="{{ 'cart.title' | t }}" aria-hidden="true">
+    <div class="cart-header">
+      <h2 class="cart-header__title">{{ 'cart.title' | t | upcase }}</h2>
+      <button class="cart-close" id="cartClose" aria-label="{{ 'accessibility.close' | t }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">{{ 'cart.empty' | t }}</p>
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-total">
+        <span class="label">{{ 'cart.subtotal' | t }}</span>
+        <span id="cartSubtotal">{{ cart.total_price | money }}</span>
+      </div>
+      {%- if cart.total_discounts > 0 -%}
+        <div class="cart-total cart-total--discount">
+          <span class="label">{{ 'cart.savings' | t }}</span>
+          <span>-{{ cart.total_discounts | money }}</span>
+        </div>
+      {%- endif -%}
+      <div class="cart-total cart-total--grand">
+        <span>{{ 'cart.total' | t }}</span>
+        <span id="cartGrandtotal">{{ cart.total_price | money }}</span>
+      </div>
+      <a href="{{ routes.checkout }}" class="btn btn-primary cart-checkout-btn">
+        {{ 'cart.checkout' | t }} <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <span class="toast__check" aria-hidden="true">✓</span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script>
+    window.shopUrl = '{{ shop.url }}';
+    window.cartUrl = '{{ routes.cart_url }}';
+    window.routes = {
+      cart_add_url: '{{ routes.cart_add_url }}',
+      cart_change_url: '{{ routes.cart_change_url }}',
+      cart_update_url: '{{ routes.cart_update_url }}',
+      cart_url: '{{ routes.cart_url }}',
+      predictive_search_url: '{{ routes.predictive_search_url }}'
+    };
+    window.cartStrings = {
+      error: `{{ 'sections.cart.cart_error' | t }}`,
+      quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+    };
+    window.moneyFormat = {{ shop.money_format | json }};
+  </script>
+
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>

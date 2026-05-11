@@ -1,0 +1,53 @@
+{% comment %}
+  Renders price for a product or variant.
+  Usage: {% render 'price', product: product, use_variant: false %}
+{% endcomment %}
+
+{%- liquid
+  assign target = product
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  endif
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price | default: 1999
+  assign available = target.available | default: false
+  assign money_price = price | money
+  if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+  endif
+-%}
+
+<div class="price{% if compare_at_price > price %} price--on-sale{% endif %}{% if available == false %} price--sold-out{% endif %}">
+  <span class="price__current" aria-label="{{ 'products.product.price.regular_price' | t }}">
+    {%- if product.price_varies and use_variant == false -%}
+      {{ 'products.product.price.from_price_html' | t: price: money_price }}
+    {%- else -%}
+      {{ money_price }}
+    {%- endif -%}
+  </span>
+
+  {%- if compare_at_price > price -%}
+    <s class="price__compare" aria-label="{{ 'products.product.price.compare_at_price' | t }}">
+      {{ compare_at_price | money }}
+    </s>
+    <span class="product-badge-sale" aria-label="{{ 'products.product.price.save' | t }}">
+      -{{ compare_at_price | minus: price | times: 100 | divided_by: compare_at_price | round }}%
+    </span>
+  {%- endif -%}
+
+  {%- if available == false -%}
+    <span class="price__sold-out" aria-label="{{ 'products.product.sold_out' | t }}">
+      {{ 'products.product.sold_out' | t }}
+    </span>
+  {%- endif -%}
+
+  {%- if target.unit_price -%}
+    <span class="product-unit-price" aria-label="{{ 'products.product.price.unit_price' | t }}">
+      {{ target.unit_price | money }}
+      {%- assign unit_price_separator = ' / ' -%}
+      {%- assign unit_price_base_unit = target.unit_price_measurement.reference_value -%}
+      {%- if unit_price_base_unit != 1 -%}{{ unit_price_base_unit }}{%- endif -%}
+      {{ target.unit_price_measurement.reference_unit }}
+    </span>
+  {%- endif -%}
+</div>

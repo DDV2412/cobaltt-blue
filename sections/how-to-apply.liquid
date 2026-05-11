@@ -1,0 +1,158 @@
+{% comment %} How to Apply Steps Section {% endcomment %}
+
+<section class="section" id="{{ section.settings.section_id | default: 'apply' }}" aria-labelledby="apply-heading">
+  <div class="section-inner">
+    <div class="reveal" style="max-width:420px;">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 id="apply-heading" class="lg" style="font-size:60px;line-height:0.95;margin:18px 0;letter-spacing:0.02em;">
+        {{ section.settings.heading | default: 'FOUR STEPS TO<br>PERFECT COAT' }}
+      </h2>
+      {%- if section.settings.subheading != blank -%}
+        <p style="color:var(--text-2);font-size:16px;line-height:1.7;">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- assign steps = section.blocks | where: 'type', 'step' -%}
+    {%- assign steps_per_row = section.settings.steps_per_row | default: 3 -%}
+
+    {%- assign row_count = steps.size | divided_by: steps_per_row | ceil -%}
+
+    {%- for row in (1..row_count) -%}
+      <div class="apply-grid reveal" {% if forloop.index > 1 %}style="margin-top:32px;"{% endif %}>
+        {%- assign start = forloop.index0 | times: steps_per_row -%}
+        {%- assign end = start | plus: steps_per_row | minus: 1 -%}
+
+        {%- for i in (start..end) -%}
+          {%- assign block = steps[i] -%}
+          {%- if block -%}
+            {%- unless forloop.first -%}
+              <div class="arrow-link" aria-hidden="true">→</div>
+            {%- endunless -%}
+            <div class="step" {{ block.shopify_attributes }}>
+              <div class="num" aria-hidden="true">{{ block.settings.number | default: forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+              {%- if block.settings.title != blank -%}
+                <h4>{{ block.settings.title }}</h4>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p>{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <div></div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How to apply",
+  "tag": "section",
+  "class": "section-how-to-apply",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "apply"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Application Guide"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FOUR STEPS TO<br>PERFECT COAT"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "No special tools required. Achieve showroom results in your own driveway."
+    },
+    {
+      "type": "range",
+      "id": "steps_per_row",
+      "label": "Steps per row",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": "Controls grid layout. Arrows appear between steps."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "WASH & DECONTAMINATE"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Thoroughly wash the vehicle to remove dirt and grease."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to apply",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "WASH &\nDECONTAMINATE",
+            "description": "Thoroughly wash the vehicle to remove dirt and grease. Use an iron remover and clay bar to eliminate bonded contaminants."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "POLISH\n(IF NEEDED)",
+            "description": "For best results, lightly polish with a DA polisher to remove swirl marks and create a clean base for ceramic bonding."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "APPLY THE\nCOATING",
+            "description": "Apply a few drops onto the suede applicator. Work panel by panel in cross-hatch motions. Allow 3–5 minutes for flash indicator."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "BUFF & CURE",
+            "description": "Buff off with microfibre cloth. Allow 24h before water contact, 7 days for full 9H cure. Protected for years."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,100 @@
+{% comment %} Final CTA Banner Section {% endcomment %}
+
+<section class="cta" aria-labelledby="cta-heading">
+  <div class="cta-wrap">
+    <div class="cta-inner">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ section.settings.eyebrow }}</div>
+        {%- endif -%}
+        <h2 id="cta-heading">{{ section.settings.heading | default: 'YOUR CAR<br/>DESERVES<br/>BETTER.' }}</h2>
+      </div>
+      <div class="cta-actions">
+        {%- if section.settings.btn_primary_label != blank -%}
+          <button
+            class="btn btn-primary"
+            data-add-to-cart
+            data-variant-id="{{ all_products[section.settings.product].selected_or_first_available_variant.id }}"
+            data-qty="1"
+          >
+            {{ section.settings.btn_primary_label }}
+            {%- if section.settings.product != blank -%}
+              &mdash; <span class="dyn-price">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
+            {%- endif -%}
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        {%- endif -%}
+        {%- if section.settings.btn_secondary_label != blank -%}
+          <a
+            class="btn btn-ghost"
+            href="{{ section.settings.btn_secondary_url | default: '#' }}"
+            {% if section.settings.btn_secondary_scroll != blank %}data-scroll="{{ section.settings.btn_secondary_scroll }}"{% endif %}
+          >{{ section.settings.btn_secondary_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.fine_print != blank -%}
+          <div class="fine">{{ section.settings.fine_print }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA banner",
+  "tag": "section",
+  "class": "section-cta-banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Limited Time — 26% OFF"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>YOUR CAR<br/>DESERVES<br/>BETTER.</p>"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (for price)"
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary button label",
+      "default": "View All Options"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_scroll",
+      "label": "Secondary button scroll target (e.g. #why)"
+    },
+    {
+      "type": "text",
+      "id": "fine_print",
+      "label": "Fine print text",
+      "default": "Free shipping · 30-day guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA banner"
+    }
+  ]
+}
+{% endschema %}

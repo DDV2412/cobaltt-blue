@@ -1,0 +1,49 @@
+{% comment %} List Collections Section {% endcomment %}
+
+<div class="list-collections">
+  <h1>{{ 'collections.general.title' | t | default: 'Collections' }}</h1>
+  {%- paginate collections by section.settings.collections_per_page -%}
+    <div class="collections-grid">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" class="collection-card">
+          <div class="collection-card__img">
+            {%- if collection.featured_image -%}
+              <img
+                src="{{ collection.featured_image | image_url: width: 600 }}"
+                alt="{{ collection.featured_image.alt | default: collection.title | escape }}"
+                width="600"
+                height="{{ 600 | divided_by: collection.featured_image.aspect_ratio | round }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          <div class="collection-card__title">{{ collection.title }}</div>
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- render 'pagination', paginate: paginate -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "tag": "section",
+  "class": "section-list-collections",
+  "settings": [
+    {
+      "type": "range",
+      "id": "collections_per_page",
+      "label": "Collections per page",
+      "min": 6,
+      "max": 36,
+      "step": 3,
+      "default": 12
+    }
+  ],
+  "blocks": [],
+  "presets": [{ "name": "Collections list" }]
+}
+{% endschema %}

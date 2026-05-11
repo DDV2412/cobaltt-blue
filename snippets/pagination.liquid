@@ -1,0 +1,32 @@
+{% comment %}
+  Renders pagination links.
+  Usage: {% render 'pagination', paginate: paginate %}
+{% endcomment %}
+
+{%- if paginate.pages > 1 -%}
+  <nav class="pagination" aria-label="{{ 'general.pagination.label' | t | default: 'Pagination' }}">
+    {%- if paginate.previous -%}
+      <a href="{{ paginate.previous.url }}" class="prev" aria-label="{{ 'general.pagination.previous' | t | default: 'Previous' }}">←</a>
+    {%- else -%}
+      <span class="prev" aria-hidden="true">←</span>
+    {%- endif -%}
+
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title | default: part.title }}">{{ part.title }}</a>
+      {%- else -%}
+        {%- if part.title == paginate.current_page -%}
+          <span class="current" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title | default: part.title }}">{{ part.title }}</span>
+        {%- else -%}
+          <span aria-hidden="true">{{ part.title }}</span>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}" class="next" aria-label="{{ 'general.pagination.next' | t | default: 'Next' }}">→</a>
+    {%- else -%}
+      <span class="next" aria-hidden="true">→</span>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

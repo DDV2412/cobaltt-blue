@@ -1,0 +1,24 @@
+{% comment %} 404 Page Section {% endcomment %}
+
+<div class="error-section">
+  <h1>404</h1>
+  <p>{{ 'general.404.subtext' | t | default: "We couldn't find the page you were looking for." }}</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="{{ routes.root_url }}" class="btn btn-primary">
+      {{ 'general.404.home' | t | default: 'Go Home' }}
+      <span class="arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="{{ routes.search_url }}" class="btn btn-ghost">{{ 'general.search.search' | t | default: 'Search' }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404",
+  "tag": "section",
+  "class": "section-main-404",
+  "settings": [],
+  "blocks": [],
+  "presets": [{ "name": "404" }]
+}
+{% endschema %}

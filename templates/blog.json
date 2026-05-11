@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main-blog": {
+      "type": "main-blog",
+      "settings": {
+        "articles_per_page": 9
+      }
+    }
+  },
+  "order": ["main-blog"]
+}

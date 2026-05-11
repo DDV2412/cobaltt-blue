@@ -1,0 +1,158 @@
+{% comment %} FAQ Section {% endcomment %}
+
+<section class="section" id="{{ section.settings.section_id | default: 'faq' }}" aria-labelledby="faq-heading">
+  <div class="faq">
+    <div class="faq-side reveal">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 id="faq-heading">{{ section.settings.heading | default: 'FREQUENTLY<br/>ASKED' }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p>{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      {%- if section.settings.btn_label != blank -%}
+        <a class="btn btn-ghost btn-pill-sm" href="{{ section.settings.btn_url | default: routes.root_url }}">
+          {{ section.settings.btn_label }} →
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="faq-list reveal" id="faqList">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          <div class="faq-item {% if forloop.first and section.settings.open_first %}open{% endif %}" {{ block.shopify_attributes }}>
+            <button
+              class="faq-q"
+              aria-expanded="{% if forloop.first and section.settings.open_first %}true{% else %}false{% endif %}"
+              aria-controls="faq-answer-{{ block.id }}"
+            >
+              {{ block.settings.question | upcase }}
+              <span class="plus" aria-hidden="true">+</span>
+            </button>
+            <div
+              class="faq-a"
+              id="faq-answer-{{ block.id }}"
+              role="region"
+              aria-labelledby="faq-q-{{ block.id }}"
+            >
+              <div class="faq-a-inner">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "section-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "faq"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Got Questions?"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>FREQUENTLY<br/>ASKED</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Everything you need to know before you buy."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label",
+      "default": "Contact Support"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first item by default",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How does this product work?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>This is the answer to the question above.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is this different from wax or sealant?",
+            "answer": "<p>Wax and sealants sit on top of paint and wash off within 3–6 months. Ceramic coating chemically bonds to the clear-coat, creating a hard, hydrophobic, UV-resistant layer that lasts years.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need to paint-correct first?",
+            "answer": "<p>Ceramic coating will lock in whatever condition the paint is in. If your paint has swirl marks, we recommend a light polish first. Our kit includes guidance on assessing whether correction is needed.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What vehicles can I use this on?",
+            "answer": "<p>Cobalt Blue works on all automotive paints including single-stage, basecoat/clearcoat, matte, and satin finishes. Also bonds to glass, metal, and plastic trim.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How many vehicles does one bottle cover?",
+            "answer": "<p>The 50ml kit covers up to 3 vehicles. The 100ml Pro covers up to 7, and the 200ml Bundle covers up to 15. Larger vehicles use slightly more product.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day satisfaction guarantee. Contact us within 30 days for a full refund — no questions asked. Free replacement if the product arrives damaged.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,200 @@
+{% comment %} Hero Section {% endcomment %}
+
+<section class="hero" aria-label="{{ section.settings.heading | strip_html | default: 'Hero' }}">
+  <div class="hero-orb a" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span>{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1>{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p>{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.product != blank -%}
+        {%- assign hero_product = all_products[section.settings.product] -%}
+        {%- if hero_product.variants.size > 1 -%}
+          <div class="variants" id="heroVariants" role="group" aria-label="Select size">
+            {%- for variant in hero_product.variants -%}
+              <button
+                class="variant {% if forloop.index == section.settings.default_variant %}active{% endif %}"
+                data-variant-id="{{ variant.id }}"
+                data-price="{{ variant.price | money }}"
+                aria-pressed="{% if forloop.index == section.settings.default_variant %}true{% else %}false{% endif %}"
+              >{{ variant.title }} · {{ variant.price | money }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      <div class="hero-cta">
+        {%- if section.settings.btn_primary_label != blank -%}
+          <button
+            class="btn btn-primary"
+            id="heroBuy"
+            data-add-to-cart
+            data-variant-id="{{ all_products[section.settings.product].selected_or_first_available_variant.id }}"
+            data-qty="1"
+          >
+            {{ section.settings.btn_primary_label }}
+            {%- if section.settings.show_price -%}
+              &mdash; <span id="heroPrice">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
+            {%- endif -%}
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        {%- endif -%}
+        {%- if section.settings.btn_secondary_label != blank -%}
+          <a
+            class="btn btn-ghost"
+            href="{{ section.settings.btn_secondary_url | default: '#' }}"
+            {% if section.settings.btn_secondary_scroll != blank %}data-scroll="{{ section.settings.btn_secondary_scroll }}"{% endif %}
+          >{{ section.settings.btn_secondary_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Product Visual -->
+    <div class="hero-visual" aria-hidden="true">
+      {%- if section.settings.product_image != blank -%}
+        <img
+          src="{{ section.settings.product_image | image_url: width: 560 }}"
+          alt="{{ section.settings.product_image.alt | default: section.settings.heading | strip_html }}"
+          width="280"
+          height="540"
+          loading="eager"
+          fetchpriority="high"
+          style="position:relative;z-index:2;filter:drop-shadow(0 30px 60px rgba(17,136,214,0.4));animation:float 6s ease-in-out infinite;"
+        >
+      {%- else -%}
+        <!-- CSS Bottle fallback -->
+        <div class="hero-ring outer"><div class="dot"></div></div>
+        <div class="hero-ring"><div class="dot"></div></div>
+        <div class="bottle">
+          <div class="bottle-cap"></div>
+          <div class="bottle-neck"></div>
+          <div class="bottle-body">
+            <div class="bottle-shine"></div>
+            <div class="bottle-label">
+              <div class="brand">{{ shop.name | upcase | truncate: 12, '' }}<small>9H · CERAMIC COAT</small></div>
+              <div class="center-num">9H<small>HARDNESS</small></div>
+              <div class="meta">100 ML · 70% SiO₂</div>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var variants = document.querySelectorAll('#heroVariants .variant');
+  var heroBuy = document.getElementById('heroBuy');
+  var heroPrice = document.getElementById('heroPrice');
+
+  variants.forEach(function(v) {
+    v.addEventListener('click', function() {
+      variants.forEach(function(x) {
+        x.classList.remove('active');
+        x.setAttribute('aria-pressed', 'false');
+      });
+      v.classList.add('active');
+      v.setAttribute('aria-pressed', 'true');
+      var price = v.dataset.price;
+      var variantId = v.dataset.variantId;
+      if (heroPrice) heroPrice.textContent = price;
+      if (heroBuy) heroBuy.dataset.variantId = variantId;
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "9H Professional Ceramic Formula"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>LIQUID ARMOUR<br/>FOR YOUR <span class=\"accent\">CAR.</span></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One bottle. Professional-grade SiO₂ ceramic coating that bonds to your paint, repels everything, and shines for 5 years."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "range",
+      "id": "default_variant",
+      "label": "Default variant (position)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price in button",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image (optional, replaces CSS bottle)"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary button label",
+      "default": "View All Options"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_scroll",
+      "label": "Secondary button scroll target (e.g. #why)",
+      "info": "If set, clicking this button scrolls to the target section. Leave blank to use URL instead."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

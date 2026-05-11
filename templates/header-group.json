@@ -1,0 +1,70 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "block1": { "type": "announcement", "settings": { "text": "Free Shipping on Orders Over $60" } },
+        "block2": { "type": "announcement", "settings": { "text": "30-Day Satisfaction Guarantee" } },
+        "block3": { "type": "announcement", "settings": { "text": "9H Professional Grade" } },
+        "block4": { "type": "announcement", "settings": { "text": "Free Lifetime Support" } }
+      },
+      "block_order": ["block1", "block2", "block3", "block4"],
+      "settings": { "show_announcement": true }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "menu_item_products": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Products",
+            "link": "/collections/all",
+            "has_dropdown": false
+          }
+        },
+        "menu_item_why": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Why Cobalt",
+            "link": "/#why",
+            "has_dropdown": false
+          }
+        },
+        "menu_item_how": {
+          "type": "menu_item",
+          "settings": {
+            "label": "How to Apply",
+            "link": "/#apply",
+            "has_dropdown": false
+          }
+        },
+        "menu_item_reviews": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Reviews",
+            "link": "/#reviews",
+            "has_dropdown": false
+          }
+        },
+        "menu_item_faq": {
+          "type": "menu_item",
+          "settings": {
+            "label": "FAQ",
+            "link": "/#faq",
+            "has_dropdown": false
+          }
+        }
+      },
+      "block_order": ["menu_item_products", "menu_item_why", "menu_item_how", "menu_item_reviews", "menu_item_faq"],
+      "settings": {
+        "menu": "main-menu",
+        "show_search": true,
+        "show_cart": true,
+        "sticky_header": true
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

@@ -1,0 +1,81 @@
+{% comment %} Proof Bar Section {% endcomment %}
+
+<section class="proof" aria-label="Key statistics">
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'stat' -%}
+      <div class="proof-item" {{ block.shopify_attributes }}>
+        <div
+          class="proof-num"
+          {% if block.settings.animate_count and block.settings.count_value != 0 %}
+            data-count="{{ block.settings.count_value }}"
+          {% endif %}
+        >
+          {{ block.settings.value }}
+          {%- if block.settings.show_star -%}
+            <span class="star" aria-hidden="true">★</span>
+          {%- endif -%}
+        </div>
+        <div class="proof-label">{{ block.settings.label }}</div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "Proof bar",
+  "tag": "section",
+  "class": "section-proof-bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "4.9"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_star",
+          "label": "Show star icon",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "count_value",
+          "label": "Animated count-up target (0 to disable)",
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "animate_count",
+          "label": "Enable count-up animation",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Avg Rating"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Proof bar",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "4.9", "show_star": true, "label": "Avg Rating" } },
+        { "type": "stat", "settings": { "value": "0", "animate_count": true, "count_value": 14200, "label": "Cars Protected" } },
+        { "type": "stat", "settings": { "value": "9H", "label": "Hardness" } },
+        { "type": "stat", "settings": { "value": "5 YR", "label": "Protection Life" } },
+        { "type": "stat", "settings": { "value": "110°", "label": "Contact Angle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

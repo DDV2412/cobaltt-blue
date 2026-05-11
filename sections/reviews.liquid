@@ -1,0 +1,225 @@
+{% comment %} Reviews Section {% endcomment %}
+
+<section class="section" id="{{ section.settings.section_id | default: 'reviews' }}" aria-labelledby="reviews-heading">
+  <div class="reviews-head reveal">
+    <h2 id="reviews-heading">{{ section.settings.heading | default: 'WHAT THEY SAY' }}</h2>
+  </div>
+
+  {%- if section.settings.show_summary -%}
+    <div class="reviews-summary reveal" id="rsBars">
+      <div class="rs-score" aria-label="{{ section.settings.avg_score }} out of 5 stars">{{ section.settings.avg_score }}</div>
+      <div class="rs-meta">
+        <div class="rs-stars" aria-hidden="true">★★★★★</div>
+        <div class="rs-meta-sub">
+          {{ 'sections.reviews.based_on' | t | default: 'Based on' }}
+          {{ section.settings.review_count }}
+          {{ 'sections.reviews.verified_reviews' | t | default: 'verified reviews' }}
+        </div>
+      </div>
+      <div class="rs-bars" aria-label="Rating breakdown">
+        {%- assign bar_data = '87,9,3,1,0' | split: ',' -%}
+        {%- for pct in section.settings.bar_values | split: ',' -%}
+          {%- assign star_num = 5 | minus: forloop.index0 -%}
+          <div class="rs-bar">
+            <span class="star-num" aria-hidden="true">{{ star_num }}★</span>
+            <span class="track" role="progressbar" aria-valuenow="{{ pct }}" aria-valuemin="0" aria-valuemax="100" aria-label="{{ star_num }} star: {{ pct }}%">
+              <span class="fill" data-w="{{ pct }}"></span>
+            </span>
+            <span class="pct" aria-hidden="true">{{ pct }}%</span>
+          </div>
+        {%- endfor -%}
+      </div>
+      {%- if section.settings.all_reviews_label != blank -%}
+        <div class="rs-action">
+          <a class="btn btn-ghost btn-pill-sm" href="{{ section.settings.all_reviews_url | default: '#' }}">
+            {{ section.settings.all_reviews_label }} →
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="reviews-grid reveal">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'review' -%}
+        <article class="review-card" {{ block.shopify_attributes }}>
+          <div class="review-top">
+            <span class="stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+              {%- for i in (1..block.settings.rating) -%}★{%- endfor -%}
+            </span>
+            <span class="date">{{ block.settings.date }}</span>
+          </div>
+          {%- if block.settings.title != blank -%}
+            <h4>{{ block.settings.title }}</h4>
+          {%- endif -%}
+          {%- if block.settings.quote != blank -%}
+            <blockquote class="quote">{{ block.settings.quote }}</blockquote>
+          {%- endif -%}
+          <div class="review-author">
+            <div class="avatar" aria-hidden="true">{{ block.settings.author_initials }}</div>
+            <div>
+              <div class="name">{{ block.settings.author_name }}</div>
+              {%- if block.settings.car != blank -%}
+                <div class="car">{{ block.settings.car }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        </article>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "tag": "section",
+  "class": "section-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "reviews"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT THEY SAY"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show rating summary",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "avg_score",
+      "label": "Average score",
+      "default": "4.9"
+    },
+    {
+      "type": "number",
+      "id": "review_count",
+      "label": "Total review count",
+      "default": 847
+    },
+    {
+      "type": "text",
+      "id": "bar_values",
+      "label": "Star bar percentages (5★ to 1★, comma-separated)",
+      "default": "87,9,3,1,0",
+      "info": "Enter 5 values from 5-star down to 1-star, e.g. 87,9,3,1,0"
+    },
+    {
+      "type": "text",
+      "id": "all_reviews_label",
+      "label": "All reviews button label",
+      "default": "All 847 Reviews"
+    },
+    {
+      "type": "url",
+      "id": "all_reviews_url",
+      "label": "All reviews URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "MAR 2025"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Great product!"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "Amazing results from this ceramic coating."
+        },
+        {
+          "type": "text",
+          "id": "author_initials",
+          "label": "Author initials",
+          "default": "JM"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "JAMES M."
+        },
+        {
+          "type": "text",
+          "id": "car",
+          "label": "Car model",
+          "default": "Porsche 911 Carrera S"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "MAR 2025",
+            "title": "UNBELIEVABLE GLOSS DEPTH",
+            "quote": "\"The coating on my old Porsche looked like glass. Two years on it still beads water like the day I applied it. Worth every penny.\"",
+            "author_initials": "JM",
+            "author_name": "JAMES M.",
+            "car": "Porsche 911 Carrera S"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "FEB 2025",
+            "title": "FINALLY A DIY COAT THAT WORKS",
+            "quote": "\"I was sceptical doing this myself but the instructions were so clear. Turned out absolutely perfect. My AMG looks like it just left the showroom.\"",
+            "author_initials": "SR",
+            "author_name": "SOFIA R.",
+            "car": "Mercedes AMG C63"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "JAN 2025",
+            "title": "TRIED 4 BRANDS. THIS WINS.",
+            "quote": "\"I tried Gtechniq, CarPro, and others. Cobalt Blue beats all of them on water contact angle. The gloss enhancement is something else.\"",
+            "author_initials": "AK",
+            "author_name": "ALEX K.",
+            "car": "BMW M4 Competition"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

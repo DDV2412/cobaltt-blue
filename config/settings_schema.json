@@ -1,0 +1,220 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Cobalt Blue",
+    "theme_version": "1.0.0",
+    "theme_author": "Cobalt Blue",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (Cobalt Blue)",
+        "default": "#1188D6"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (Cyan)",
+        "default": "#4DC8FF"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#06080F"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface",
+        "default": "#0C0F1A"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text",
+        "default": "#E8EAF0"
+      },
+      {
+        "type": "color",
+        "id": "color_text_2",
+        "label": "Secondary text",
+        "default": "#9BA3B8"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "league_gothic_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "montserrat_n4"
+      },
+      {
+        "type": "range",
+        "id": "font_size_base",
+        "label": "Base font size (px)",
+        "min": 12,
+        "max": 20,
+        "step": 1,
+        "default": 15
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "32 x 32px .png recommended"
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width (px)",
+        "min": 60,
+        "max": 300,
+        "step": 10,
+        "default": 120
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo text (if no image)",
+        "default": "COBALT BLUE"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter",
+        "label": "Twitter/X URL"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "url",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Drawer" },
+          { "value": "page", "label": "Page" }
+        ],
+        "default": "drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_show_order_note",
+        "label": "Enable order note",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "product_show_vendor",
+        "label": "Show vendor",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_quantity",
+        "label": "Show quantity selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_share",
+        "label": "Show share buttons",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Enable predictive search",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "predictive_search_type",
+        "label": "Search type",
+        "options": [
+          { "value": "product,article,page", "label": "Products, Articles & Pages" },
+          { "value": "product", "label": "Products only" },
+          { "value": "product,article", "label": "Products & Articles" }
+        ],
+        "default": "product,article,page"
+      }
+    ]
+  },
+  {
+    "name": "Animations",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animations_enabled",
+        "label": "Enable scroll animations",
+        "default": true
+      }
+    ]
+  }
+]

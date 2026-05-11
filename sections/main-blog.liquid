@@ -1,0 +1,52 @@
+{% comment %} Main Blog Section {% endcomment %}
+
+<div class="blog-header">
+  <h1>{{ blog.title }}</h1>
+</div>
+
+{%- paginate blog.articles by section.settings.articles_per_page -%}
+  <div class="blog-grid">
+    {%- for article in blog.articles -%}
+      <a href="{{ article.url }}" class="article-card">
+        {%- if article.image -%}
+          <div class="article-card__img">
+            <img
+              src="{{ article.image | image_url: width: 720 }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              width="720"
+              height="{{ 720 | divided_by: article.image.aspect_ratio | round }}"
+              loading="lazy"
+            >
+          </div>
+        {%- endif -%}
+        <div class="article-card__body">
+          <div class="article-card__date">{{ article.published_at | date: '%b %d, %Y' }}</div>
+          <h2 class="article-card__title">{{ article.title }}</h2>
+          <p class="article-card__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 30 }}</p>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+  {%- render 'pagination', paginate: paginate -%}
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog posts",
+  "tag": "section",
+  "class": "section-main-blog",
+  "settings": [
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 3,
+      "max": 24,
+      "step": 3,
+      "default": 9
+    }
+  ],
+  "blocks": [],
+  "presets": [{ "name": "Blog posts" }]
+}
+{% endschema %}

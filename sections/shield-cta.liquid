@@ -1,0 +1,131 @@
+{% comment %} Shield / Hero 2 Section {% endcomment %}
+
+<section class="hero-2 section-dark" aria-labelledby="shield-heading">
+  <div class="hero-2-inner">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+
+      <h2 id="shield-heading">
+        {{ section.settings.line1 | default: 'SHIELD' }}<br>
+        <span class="lg" style="color:transparent;background:linear-gradient(180deg,var(--blue-l),var(--blue));-webkit-background-clip:text;background-clip:text;">
+          {{ section.settings.line2 | default: 'YOUR RIDE.' }}
+        </span>
+      </h2>
+
+      {%- if section.settings.description != blank -%}
+        <p>{{ section.settings.description }}</p>
+      {%- endif -%}
+
+      <div class="hero-cta">
+        {%- if section.settings.btn_primary_label != blank -%}
+          <button
+            class="btn btn-primary"
+            data-add-to-cart
+            data-variant-id="{{ all_products[section.settings.product].selected_or_first_available_variant.id }}"
+            data-qty="1"
+          >
+            {{ section.settings.btn_primary_label }}
+            {%- if section.settings.product != blank -%}
+              &mdash; <span class="dyn-price">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
+            {%- endif -%}
+            <span class="arrow" aria-hidden="true">↗</span>
+          </button>
+        {%- endif -%}
+        {%- if section.settings.btn_secondary_label != blank -%}
+          <a
+            class="btn btn-ghost"
+            href="{{ section.settings.btn_secondary_url | default: '#' }}"
+            {% if section.settings.btn_secondary_scroll != blank %}data-scroll="{{ section.settings.btn_secondary_scroll }}"{% endif %}
+          >{{ section.settings.btn_secondary_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Water bead visual -->
+    <div class="water-bead" aria-hidden="true">
+      <div class="surface">
+        <div class="angle-tag">{{ section.settings.angle_label | default: '110° CONTACT ANGLE' }}</div>
+        <div class="bead b1"></div>
+        <div class="bead b2"></div>
+        <div class="bead b3"></div>
+        <div class="bead b4"></div>
+        <div class="bead b5"></div>
+        <div class="bead b6"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shield CTA",
+  "tag": "section",
+  "class": "section-shield-cta",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Premium Protective Coatings"
+    },
+    {
+      "type": "text",
+      "id": "line1",
+      "label": "Heading line 1",
+      "default": "SHIELD"
+    },
+    {
+      "type": "text",
+      "id": "line2",
+      "label": "Heading line 2 (gradient)",
+      "default": "YOUR RIDE."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Industry-leading ceramic coatings, PPF, and paint protection engineered for maximum gloss, durability, and value retention. Your car deserves nothing less."
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product (for price)"
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary button label",
+      "default": "View All Options"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_scroll",
+      "label": "Secondary button scroll target (e.g. #results)"
+    },
+    {
+      "type": "text",
+      "id": "angle_label",
+      "label": "Contact angle badge",
+      "default": "110° CONTACT ANGLE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shield CTA"
+    }
+  ]
+}
+{% endschema %}

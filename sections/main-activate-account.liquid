@@ -1,0 +1,31 @@
+{% comment %} Activate Account Section {% endcomment %}
+
+<div class="auth-box">
+  <h1>{{ 'customer.activate_account.title' | t }}</h1>
+  <p style="color:var(--text-2);margin-bottom:24px;">{{ 'customer.activate_account.subtext' | t }}</p>
+  {%- form 'activate_customer_password' -%}
+    {%- if form.errors -%}
+      <p class="form-error" role="alert">{{ form.errors | default_errors }}</p>
+    {%- endif -%}
+    <div class="form-group">
+      <label class="form-label" for="ActivatePassword">{{ 'customer.activate_account.password' | t }} *</label>
+      <input type="password" name="customer[password]" id="ActivatePassword" class="form-input" required autocomplete="new-password" aria-required="true">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="ActivatePasswordConfirm">{{ 'customer.activate_account.password_confirm' | t }} *</label>
+      <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirm" class="form-input" required autocomplete="new-password" aria-required="true">
+    </div>
+    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">{{ 'customer.activate_account.submit' | t }} <span class="arrow" aria-hidden="true">↗</span></button>
+  {%- endform -%}
+</div>
+
+{% schema %}
+{
+  "name": "Activate account",
+  "tag": "section",
+  "class": "section-main-activate",
+  "settings": [],
+  "blocks": [],
+  "presets": [{ "name": "Activate account" }]
+}
+{% endschema %}

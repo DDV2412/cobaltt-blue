@@ -1,0 +1,89 @@
+{% comment %} Customer Order Section {% endcomment %}
+
+<div class="customer-section">
+  <h1>{{ 'customer.order.title' | t: name: order.name }}</h1>
+  <p style="color:var(--text-2);margin-bottom:32px;">{{ 'customer.order.date_html' | t: date: order.created_at | date: '%B %d, %Y' }}</p>
+
+  <div class="table-scroll">
+  <table class="order-table" style="margin-bottom:32px;">
+    <thead>
+      <tr>
+        <th scope="col">{{ 'customer.order.product' | t }}</th>
+        <th scope="col">{{ 'customer.order.sku' | t }}</th>
+        <th scope="col">{{ 'customer.order.price' | t }}</th>
+        <th scope="col">{{ 'customer.order.quantity' | t }}</th>
+        <th scope="col">{{ 'customer.order.total' | t }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for line_item in order.line_items -%}
+        <tr>
+          <td>
+            <a href="{{ line_item.product.url }}">{{ line_item.title }}</a>
+            {%- if line_item.selling_plan_allocation -%}
+              <span style="display:block;font-size:11px;color:var(--blue-l);">{{ line_item.selling_plan_allocation.selling_plan.name }}</span>
+            {%- endif -%}
+            {%- for property in line_item.properties -%}
+              {%- unless property.last == blank -%}
+                <span style="display:block;font-size:11px;color:var(--text-3);">{{ property.first }}: {{ property.last }}</span>
+              {%- endunless -%}
+            {%- endfor -%}
+          </td>
+          <td>{{ line_item.sku }}</td>
+          <td>
+            {{ line_item.final_price | money }}
+            {%- if line_item.unit_price -%}
+              <span style="display:block;font-size:11px;color:var(--text-3);">
+                {{ line_item.unit_price | money }} / {{ line_item.unit_price_measurement.reference_value }}{{ line_item.unit_price_measurement.reference_unit }}
+              </span>
+            {%- endif -%}
+          </td>
+          <td>{{ line_item.quantity }}</td>
+          <td>{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align:right;color:var(--text-2);">{{ 'customer.order.subtotal' | t }}</td>
+        <td>{{ order.subtotal_price | money }}</td>
+      </tr>
+      {%- for discount in order.discounts -%}
+        <tr>
+          <td colspan="4" style="text-align:right;color:var(--blue-l);">{{ 'customer.order.discount' | t }}</td>
+          <td>-{{ discount.savings | money }}</td>
+        </tr>
+      {%- endfor -%}
+      {%- for shipping_method in order.shipping_methods -%}
+        <tr>
+          <td colspan="4" style="text-align:right;color:var(--text-2);">{{ 'customer.order.shipping' | t }}: {{ shipping_method.title }}</td>
+          <td>{{ shipping_method.price | money }}</td>
+        </tr>
+      {%- endfor -%}
+      {%- for tax_line in order.tax_lines -%}
+        <tr>
+          <td colspan="4" style="text-align:right;color:var(--text-2);">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate_percentage }}%)</td>
+          <td>{{ tax_line.price | money }}</td>
+        </tr>
+      {%- endfor -%}
+      <tr style="font-weight:700;">
+        <td colspan="4" style="text-align:right;">{{ 'customer.order.total' | t }}</td>
+        <td>{{ order.total_net_amount | money }}</td>
+      </tr>
+    </tfoot>
+  </table>
+  </div>
+
+  <a href="{{ routes.account_url }}" class="btn btn-ghost btn-pill-sm">← {{ 'customer.account.return' | t | default: 'Back to account' }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "Order",
+  "tag": "section",
+  "class": "section-main-order",
+  "settings": [],
+  "blocks": [],
+  "presets": [{ "name": "Order" }]
+}
+{% endschema %}

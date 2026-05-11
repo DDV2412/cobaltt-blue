@@ -1,0 +1,122 @@
+{% comment %} SEO Meta Tags {% endcomment %}
+
+{% assign og_title = page_title %}
+{% assign og_description = page_description | default: shop.description %}
+{% assign og_image = nil %}
+
+{% if template.name == 'product' %}
+  {% assign og_image = product.featured_image %}
+  {% assign og_title = product.title %}
+  {% assign og_description = product.description | strip_html | truncatewords: 50 %}
+{% elsif template.name == 'collection' %}
+  {% assign og_image = collection.image %}
+{% elsif template.name == 'article' %}
+  {% assign og_image = article.image %}
+  {% assign og_title = article.title %}
+  {% assign og_description = article.excerpt_or_content | strip_html | truncatewords: 50 %}
+{% elsif template.name == 'page' %}
+  {% assign og_title = page.title %}
+  {% assign og_description = page.content | strip_html | truncatewords: 50 %}
+{% endif %}
+
+{% unless og_image %}
+  {% if settings.og_image != blank %}
+    {% assign og_image = settings.og_image %}
+  {% endif %}
+{% endunless %}
+
+<link rel="canonical" href="{{ canonical_url }}">
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:type" content="{% if template.name == 'product' %}product{% elsif template.name == 'article' %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ og_title | escape }}">
+{% if og_description %}
+  <meta property="og:description" content="{{ og_description | escape }}">
+{% endif %}
+<meta property="og:url" content="{{ canonical_url }}">
+{% if og_image %}
+  <meta property="og:image" content="https:{{ og_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title | escape }}">
+{% if og_description %}
+  <meta name="twitter:description" content="{{ og_description | escape }}">
+{% endif %}
+{% if og_image %}
+  <meta name="twitter:image" content="https:{{ og_image | image_url: width: 1200 }}">
+{% endif %}
+{% if settings.twitter_handle != blank %}
+  <meta name="twitter:site" content="{{ settings.twitter_handle }}">
+{% endif %}
+
+{% if template.name == 'product' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | json }},
+  "url": "{{ canonical_url }}",
+  "image": [
+    {% for image in product.images limit: 3 %}
+      "https:{{ image | image_url: width: 800 }}"{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {% for variant in product.variants %}
+    {
+      "@type": "Offer",
+      "price": {{ variant.price | divided_by: 100.0 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+      "url": "{{ canonical_url }}?variant={{ variant.id }}",
+      "sku": {{ variant.sku | json }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% if product.metafields.reviews.rating %}
+  ,"aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ product.metafields.reviews.rating.value }}",
+    "reviewCount": "{{ product.metafields.reviews.rating_count.value }}"
+  }
+  {% endif %}
+}
+</script>
+{% endif %}
+
+{% if template.name == 'article' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ article.title | json }},
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "author": { "@type": "Person", "name": {{ article.author | json }} },
+  "image": {% if article.image %}"https:{{ article.image | image_url: width: 1200 }}"{% else %}""{% endif %},
+  "url": "{{ canonical_url }}"
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": "{{ shop.url }}"
+  {% if settings.social_instagram_link != blank %}
+  ,"sameAs": [
+    {{ settings.social_instagram_link | json }}
+  ]
+  {% endif %}
+}
+</script>

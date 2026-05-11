@@ -1,0 +1,80 @@
+{% comment %} Main Search Section {% endcomment %}
+
+<div class="search-page">
+  <h1>{{ 'general.search.title' | t | default: 'Search' }}</h1>
+
+  <form action="{{ routes.search_url }}" method="get" role="search" class="search-form">
+    <label for="mainSearchInput" class="visually-hidden">{{ 'general.search.search' | t }}</label>
+    <input
+      type="search"
+      name="q"
+      id="mainSearchInput"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.placeholder' | t | default: 'Search products, pages…' }}"
+      class="search-input"
+      autocomplete="off"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+    <input type="hidden" name="type" value="product,article,page">
+    <button type="submit" class="btn btn-primary btn-pill-sm">
+      {{ 'general.search.search' | t | default: 'Search' }}
+    </button>
+  </form>
+
+  {%- if search.performed -%}
+    {%- if search.results_count == 0 -%}
+      <p class="search-no-results">
+        {{ 'general.search.no_results' | t: terms: search.terms | default: 'No results for' }}
+        "{{ search.terms }}"
+      </p>
+    {%- else -%}
+      <p style="font-size:13px;color:var(--text-3);margin-bottom:32px;">
+        {{ 'general.search.results_count' | t: count: search.results_count | default: search.results_count | append: ' results' }}
+      </p>
+
+      {%- paginate search.results by 24 -%}
+        <div class="products-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {%- render 'card-product', card_product: item -%}
+            {%- elsif item.object_type == 'article' -%}
+              <a href="{{ item.url }}" class="article-card" style="text-decoration:none;">
+                <div class="article-card__body">
+                  <div class="article-card__date">{{ item.published_at | date: '%b %d, %Y' }}</div>
+                  <h3 class="article-card__title">{{ item.title }}</h3>
+                  <p class="article-card__excerpt">{{ item.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
+                </div>
+              </a>
+            {%- elsif item.object_type == 'page' -%}
+              <a href="{{ item.url }}" class="card-product" style="text-decoration:none;">
+                <div class="card-product__info" style="padding:24px;">
+                  <h3 class="card-product__title">{{ item.title }}</h3>
+                  <p style="font-size:13px;color:var(--text-2);margin-top:8px;">{{ item.content | strip_html | truncatewords: 20 }}</p>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+<!-- Predictive search section (used by header search modal) -->
+<div id="shopify-section-predictive-search" style="display:none;"></div>
+
+{% schema %}
+{
+  "name": "Search",
+  "tag": "section",
+  "class": "section-main-search",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Search"
+    }
+  ]
+}
+{% endschema %}

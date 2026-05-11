@@ -1,0 +1,49 @@
+{% comment %} Custom Liquid Section {% endcomment %}
+
+<div class="custom-liquid">
+  {%- if section.settings.custom_liquid != blank -%}
+    {{ section.settings.custom_liquid }}
+  {%- endif -%}
+
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'custom_liquid' -%}
+      <div {{ block.shopify_attributes }}>
+        {{ block.settings.custom_liquid }}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Liquid",
+  "tag": "div",
+  "class": "section-custom-liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom Liquid",
+      "info": "Add app snippets or other Liquid code to create advanced customizations."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Liquid"
+    }
+  ]
+}
+{% endschema %}

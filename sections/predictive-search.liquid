@@ -1,0 +1,76 @@
+{% comment %} Predictive Search Results — rendered via Section Rendering API {% endcomment %}
+
+{%- if search.performed -%}
+  {%- if search.results_count == 0 -%}
+    <p class="predictive-search__empty">{{ 'sections.predictive_search.no_results' | t: terms: search.terms }}</p>
+  {%- else -%}
+    {%- if search.types contains 'product' -%}
+      {%- assign product_results = search.results | where: 'object_type', 'product' -%}
+      {%- if product_results.size > 0 -%}
+        <p class="predictive-search__group-label">{{ 'sections.predictive_search.products' | t }}</p>
+        <ul class="predictive-search__list" role="listbox">
+          {%- for result in product_results limit: 5 -%}
+            <li class="predictive-search__item" role="option">
+              <a href="{{ result.url }}" class="predictive-search__link">
+                {%- if result.featured_image -%}
+                  <img src="{{ result.featured_image | image_url: width: 60 }}" alt="{{ result.featured_image.alt | escape }}" width="60" height="60" loading="lazy" class="predictive-search__img">
+                {%- endif -%}
+                <div class="predictive-search__info">
+                  <span class="predictive-search__title">{{ result.title }}</span>
+                  <span class="predictive-search__price">
+                    {%- render 'price', product: result -%}
+                  </span>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if search.types contains 'article' -%}
+      {%- assign article_results = search.results | where: 'object_type', 'article' -%}
+      {%- if article_results.size > 0 -%}
+        <p class="predictive-search__group-label">{{ 'sections.predictive_search.articles' | t }}</p>
+        <ul class="predictive-search__list" role="listbox">
+          {%- for result in article_results limit: 3 -%}
+            <li class="predictive-search__item" role="option">
+              <a href="{{ result.url }}" class="predictive-search__link">
+                <div class="predictive-search__info">
+                  <span class="predictive-search__title">{{ result.title }}</span>
+                  <span class="predictive-search__meta">{{ result.published_at | date: '%b %d, %Y' }}</span>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if search.types contains 'page' -%}
+      {%- assign page_results = search.results | where: 'object_type', 'page' -%}
+      {%- if page_results.size > 0 -%}
+        <p class="predictive-search__group-label">{{ 'sections.predictive_search.pages' | t }}</p>
+        <ul class="predictive-search__list" role="listbox">
+          {%- for result in page_results limit: 2 -%}
+            <li class="predictive-search__item" role="option">
+              <a href="{{ result.url }}" class="predictive-search__link">
+                <div class="predictive-search__info">
+                  <span class="predictive-search__title">{{ result.title }}</span>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Predictive search",
+  "tag": "section",
+  "class": "section-predictive-search"
+}
+{% endschema %}

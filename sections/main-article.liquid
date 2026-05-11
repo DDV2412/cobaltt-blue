@@ -1,0 +1,103 @@
+{% comment %} Main Article Section {% endcomment %}
+
+<article class="article-section" itemscope itemtype="https://schema.org/BlogPosting">
+  <nav class="breadcrumb" aria-label="{{ 'accessibility.breadcrumbs' | t }}">
+    <a href="{{ routes.root_url }}">{{ 'general.breadcrumbs.home' | t | default: 'Home' }}</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ blog.url }}">{{ blog.title }}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ article.title }}</span>
+  </nav>
+
+  <h1 itemprop="headline">{{ article.title }}</h1>
+  <div class="article-meta">
+    <span itemprop="author">{{ article.author }}</span>
+    <time datetime="{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}" itemprop="datePublished">
+      {{ article.published_at | date: '%B %d, %Y' }}
+    </time>
+  </div>
+
+  {%- if article.image -%}
+    <img
+      src="{{ article.image | image_url: width: 900 }}"
+      alt="{{ article.image.alt | default: article.title | escape }}"
+      class="article-img"
+      width="900"
+      height="{{ 900 | divided_by: article.image.aspect_ratio | round }}"
+      loading="eager"
+      itemprop="image"
+    >
+  {%- endif -%}
+
+  <div class="article-content rte" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  {%- if section.settings.show_share -%}
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--line-soft);display:flex;gap:16px;">
+      <a href="https://twitter.com/intent/tweet?text={{ article.title | url_encode }}&url={{ canonical_url | url_encode }}" rel="nofollow noopener" target="_blank" class="btn btn-ghost btn-pill-sm">Share on Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ canonical_url | url_encode }}" rel="nofollow noopener" target="_blank" class="btn btn-ghost btn-pill-sm">Share on Facebook</a>
+    </div>
+  {%- endif -%}
+
+  {%- if blog.comments_enabled? -%}
+    <div class="article-comments">
+      <h2>{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</h2>
+
+      {%- if article.comments.size > 0 -%}
+        {%- paginate article.comments by 5 -%}
+          {%- for comment in article.comments -%}
+            <div style="padding:20px 0;border-bottom:1px solid var(--line-soft);" id="comment-{{ comment.id }}">
+              <div style="font-size:12px;color:var(--text-3);margin-bottom:8px;">{{ comment.author }} &mdash; {{ comment.created_at | date: '%B %d, %Y' }}</div>
+              <div class="rte">{{ comment.content }}</div>
+            </div>
+          {%- endfor -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endpaginate -%}
+      {%- endif -%}
+
+      {%- form 'new_comment', article -%}
+        <h3 style="font-family:var(--font-heading);font-size:28px;letter-spacing:0.02em;margin:32px 0 20px;">{{ 'blogs.comments.leave_a_comment' | t }}</h3>
+        {%- if form.posted_successfully? -%}
+          <p class="form-success">{{ 'blogs.comments.success' | t }}</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="form-error">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label" for="CommentAuthor">{{ 'blogs.comments.name' | t }}</label>
+            <input type="text" name="comment[author]" id="CommentAuthor" class="form-input" value="{{ form.author }}" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="CommentEmail">{{ 'blogs.comments.email' | t }}</label>
+            <input type="email" name="comment[email]" id="CommentEmail" class="form-input" value="{{ form.email }}" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="CommentBody">{{ 'blogs.comments.message' | t }}</label>
+            <textarea name="comment[body]" id="CommentBody" class="form-textarea" required>{{ form.body }}</textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">{{ 'blogs.comments.post' | t }}</button>
+        </div>
+      {%- endform -%}
+    </div>
+  {%- endif -%}
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "class": "section-main-article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_share",
+      "label": "Show share buttons",
+      "default": true
+    }
+  ],
+  "blocks": [],
+  "presets": [{ "name": "Article" }]
+}
+{% endschema %}

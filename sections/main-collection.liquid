@@ -1,0 +1,161 @@
+{% comment %} Main Collection Section {% endcomment %}
+
+<div class="collection-header">
+  <h1>{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}
+    <div class="rte">{{ collection.description }}</div>
+  {%- endif -%}
+  {%- if collection.image -%}
+    <img
+      src="{{ collection.image | image_url: width: 1440 }}"
+      alt="{{ collection.image.alt | default: collection.title | escape }}"
+      class="collection-image"
+      width="1440"
+      height="300"
+      loading="lazy"
+    >
+  {%- endif -%}
+</div>
+
+<div class="collection-toolbar">
+  <p class="collection-count">
+    {{ 'collections.general.items_with_count' | t: count: collection.products_count | default: collection.products_count | append: ' products' }}
+  </p>
+  <label for="SortBy" class="visually-hidden">{{ 'collections.sorting.title' | t }}</label>
+  <select name="sort_by" id="SortBy" class="sort-select" aria-label="{{ 'collections.sorting.title' | t }}">
+    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+    {%- for option in collection.sort_options -%}
+      <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
+        {{ option.name }}
+      </option>
+    {%- endfor -%}
+  </select>
+</div>
+
+<div class="collection-layout">
+  <!-- Filters sidebar -->
+  {%- if section.settings.show_filters -%}
+    <aside class="filter-sidebar" aria-label="{{ 'sections.collection_template.filters' | t }}">
+      {%- for filter in collection.filters -%}
+        <div class="filter-group">
+          <div class="filter-group__title">{{ filter.label }}</div>
+          {%- case filter.type -%}
+            {%- when 'boolean', 'list' -%}
+              {%- for value in filter.values -%}
+                <label class="filter-option">
+                  <input
+                    type="checkbox"
+                    name="{{ value.param_name }}"
+                    value="{{ value.value }}"
+                    {% if value.active %}checked{% endif %}
+                    aria-label="{{ filter.label }}: {{ value.label }} ({{ value.count }})"
+                    onchange="this.form.submit()"
+                  >
+                  {{ value.label }} ({{ value.count }})
+                </label>
+              {%- endfor -%}
+            {%- when 'price_range' -%}
+              <div style="display:flex;gap:8px;align-items:center;">
+                <input
+                  type="number"
+                  name="{{ filter.min_value.param_name }}"
+                  value="{{ filter.min_value.value | divided_by: 100 }}"
+                  min="0"
+                  max="{{ filter.range_max | divided_by: 100 }}"
+                  placeholder="{{ 'sections.collection_template.from' | t | default: 'From' }}"
+                  class="form-input"
+                  style="width:90px;padding:8px;"
+                  aria-label="{{ 'sections.collection_template.min_price' | t }}"
+                >
+                <span style="color:var(--text-3);">–</span>
+                <input
+                  type="number"
+                  name="{{ filter.max_value.param_name }}"
+                  value="{{ filter.max_value.value | divided_by: 100 }}"
+                  min="0"
+                  max="{{ filter.range_max | divided_by: 100 }}"
+                  placeholder="{{ 'sections.collection_template.to' | t | default: 'To' }}"
+                  class="form-input"
+                  style="width:90px;padding:8px;"
+                  aria-label="{{ 'sections.collection_template.max_price' | t }}"
+                >
+              </div>
+          {%- endcase -%}
+          {%- if filter.active_values.size > 0 -%}
+            <a href="{{ filter.url_to_remove }}" class="filter-clear">
+              {{ 'sections.collection_template.clear_filter' | t | default: 'Clear' }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      {%- if collection.filters.size > 0 -%}
+        <a href="{{ collection.url }}" class="btn btn-ghost btn-pill-sm" style="margin-top:8px;">
+          {{ 'sections.collection_template.clear_all' | t | default: 'Clear all filters' }}
+        </a>
+      {%- endif -%}
+    </aside>
+  {%- endif -%}
+
+  <!-- Products grid -->
+  <div>
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size == 0 -%}
+        <p class="no-products">{{ 'sections.collection_template.empty' | t | default: 'No products found in this collection.' }}</p>
+      {%- else -%}
+        <div class="collection-grid" style="{% unless section.settings.show_filters %}grid-template-columns:repeat({{ section.settings.columns_desktop }},1fr);{% endunless %}">
+          {%- for product in collection.products -%}
+            {%- render 'card-product', card_product: product, show_vendor: section.settings.show_vendor -%}
+          {%- endfor -%}
+        </div>
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "section-main-collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show faceted filters",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show product vendor",
+      "default": false
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Collection"
+    }
+  ]
+}
+{% endschema %}

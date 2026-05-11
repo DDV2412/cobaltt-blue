@@ -1,0 +1,41 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_col_1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Products",
+            "menu": "footer-products"
+          }
+        },
+        "link_col_2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support",
+            "menu": "footer-support"
+          }
+        },
+        "link_col_3": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "menu": "footer-company"
+          }
+        }
+      },
+      "block_order": ["link_col_1", "link_col_2", "link_col_3"],
+      "settings": {
+        "show_payment_icons": true,
+        "show_locale_selector": true,
+        "show_country_selector": true,
+        "newsletter_heading": "JOIN THE CLUB",
+        "newsletter_subtext": "Get exclusive tips, early access, and members-only discounts."
+      }
+    }
+  },
+  "order": ["footer"]
+}
