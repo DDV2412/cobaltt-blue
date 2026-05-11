@@ -29,7 +29,12 @@
         </div>
       </div>
     {%- else -%}
-      <div class="tile featured" style="background: var(--bg-3);">
+      <div
+        class="tile featured"
+        style="background-image: url('{{ 'tile-before-after.png' | asset_url }}'); background-size: cover; background-position: center;"
+        role="img"
+        aria-label="{{ section.settings.featured_caption_title | default: 'UNTOUCHED VS COATED' }}"
+      >
         <div class="caption">
           <h3>{{ section.settings.featured_caption_title | default: 'UNTOUCHED VS COATED' }}</h3>
           <p>{{ section.settings.featured_caption_text | default: 'Same panel, same day. Eight months of weather, untouched.' }}</p>

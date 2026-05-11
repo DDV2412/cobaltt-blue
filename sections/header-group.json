@@ -15,49 +15,6 @@
     },
     "header": {
       "type": "header",
-      "blocks": {
-        "menu_item_products": {
-          "type": "menu_item",
-          "settings": {
-            "label": "Products",
-            "link": "/collections/all",
-            "has_dropdown": false
-          }
-        },
-        "menu_item_why": {
-          "type": "menu_item",
-          "settings": {
-            "label": "Why Cobalt",
-            "link": "/#why",
-            "has_dropdown": false
-          }
-        },
-        "menu_item_how": {
-          "type": "menu_item",
-          "settings": {
-            "label": "How to Apply",
-            "link": "/#apply",
-            "has_dropdown": false
-          }
-        },
-        "menu_item_reviews": {
-          "type": "menu_item",
-          "settings": {
-            "label": "Reviews",
-            "link": "/#reviews",
-            "has_dropdown": false
-          }
-        },
-        "menu_item_faq": {
-          "type": "menu_item",
-          "settings": {
-            "label": "FAQ",
-            "link": "/#faq",
-            "has_dropdown": false
-          }
-        }
-      },
-      "block_order": ["menu_item_products", "menu_item_why", "menu_item_how", "menu_item_reviews", "menu_item_faq"],
       "settings": {
         "menu": "main-menu",
         "show_search": true,

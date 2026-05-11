@@ -14,29 +14,30 @@
   <div class="why-body">
     <!-- Left column -->
     <div class="why-col left">
-      {%- assign left_blocks = section.blocks | where: 'type', 'feature' | where: 'settings.side', 'left' -%}
-      {%- for block in left_blocks -%}
-        <div class="why-feature reveal" {{ block.shopify_attributes }}>
-          <div>
-            {%- if block.settings.title != blank -%}
-              <h4>{{ block.settings.title | upcase }}</h4>
-            {%- endif -%}
-            {%- if block.settings.description != blank -%}
-              <p>{{ block.settings.description }}</p>
-            {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' and block.settings.side == 'left' -%}
+          <div class="why-feature reveal" {{ block.shopify_attributes }}>
+            <div>
+              {%- if block.settings.title != blank -%}
+                <h4>{{ block.settings.title | upcase }}</h4>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p>{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+            <div class="icon" aria-hidden="true">
+              {%- if block.settings.icon_svg != blank -%}
+                {{ block.settings.icon_svg }}
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+              {%- endif -%}
+            </div>
           </div>
-          <div class="icon" aria-hidden="true">
-            {%- if block.settings.icon_svg != blank -%}
-              {{ block.settings.icon_svg }}
-            {%- else -%}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-            {%- endif -%}
-          </div>
-        </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
 
-    <!-- Center: car image with glowing rings -->
+    <!-- Center: car image with solid rings -->
     <div class="why-center" aria-hidden="true">
       <div class="ring r2"></div>
       <div class="ring r1"></div>
@@ -63,25 +64,26 @@
 
     <!-- Right column -->
     <div class="why-col right">
-      {%- assign right_blocks = section.blocks | where: 'type', 'feature' | where: 'settings.side', 'right' -%}
-      {%- for block in right_blocks -%}
-        <div class="why-feature reveal" {{ block.shopify_attributes }}>
-          <div class="icon" aria-hidden="true">
-            {%- if block.settings.icon_svg != blank -%}
-              {{ block.settings.icon_svg }}
-            {%- else -%}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
-            {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' and block.settings.side == 'right' -%}
+          <div class="why-feature reveal" {{ block.shopify_attributes }}>
+            <div class="icon" aria-hidden="true">
+              {%- if block.settings.icon_svg != blank -%}
+                {{ block.settings.icon_svg }}
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+              {%- endif -%}
+            </div>
+            <div>
+              {%- if block.settings.title != blank -%}
+                <h4>{{ block.settings.title | upcase }}</h4>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p>{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
           </div>
-          <div>
-            {%- if block.settings.title != blank -%}
-              <h4>{{ block.settings.title | upcase }}</h4>
-            {%- endif -%}
-            {%- if block.settings.description != blank -%}
-              <p>{{ block.settings.description }}</p>
-            {%- endif -%}
-          </div>
-        </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
   </div>

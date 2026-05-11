@@ -981,10 +981,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background:
     radial-gradient(circle at 70% 50%, rgba(27,79,255,0.18), transparent 50%),
     var(--bg);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
 }
 .hero-2-inner { max-width: 1312px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .hero-2 h2 {
