@@ -1145,17 +1145,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   max-width: 1440px;
   margin: 0 auto;
 }
-
-.reviews-flex{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  max-width: 1440px;
-  margin: 0 auto;
-  margin-bottom: 32px;
-
-}
 .review-card {
   background: rgba(236,238,244,0.02);
   border: 1px solid var(--line-soft);
