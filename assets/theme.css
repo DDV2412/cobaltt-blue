@@ -755,10 +755,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--blue);
   transition: all 0.3s ease;
 }
-.why-col .why-feature::last-child{
+.why-col.left .why-feature:last-child{
   transform: translateX(-20px)
 }
-.why-col .why-feature::first-child{
+.why-col.left .why-feature:first-child{
   transform: translateX(-28px)
 }
 .why-feature:hover .icon {
