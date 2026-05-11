@@ -1259,16 +1259,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cta-wrap {
   border-radius: var(--radius-xl);
   padding: 6px;
-  background: #1B4FFF14;
+  background: #1B4FFF38;
   position: relative;
   max-width: 1440px;
   margin: 0 auto;
 }
 .cta-inner {
   border-radius: 26px;
-  background:
-    radial-gradient(circle at 80% 50%, rgba(17,136,214,0.25), transparent 60%),
-    linear-gradient(135deg, rgb(11,24,64), rgb(8,15,44));
+  background: #1B4FFF14;
   padding: 64px;
   display: grid;
   grid-template-columns: 1fr auto;
