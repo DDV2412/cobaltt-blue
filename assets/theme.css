@@ -17,8 +17,8 @@
   --blue-l: rgb(77,200,255);
   --royal: rgb(27,79,255);
 
-  --font-heading: 'League Gothic', sans-serif;
-  --font-body: 'Montserrat', system-ui, sans-serif;
+  --font-heading: sans-serif;
+  --font-body: system-ui, sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 16px;
