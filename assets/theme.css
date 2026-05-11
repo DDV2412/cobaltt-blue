@@ -1259,7 +1259,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cta-wrap {
   border-radius: var(--radius-xl);
   padding: 6px;
-  background: linear-gradient(135deg, rgba(77,200,255,0.4) 0%, rgba(27,79,255,0.4) 100%);
+  background: #1B4FFF14;
   position: relative;
   max-width: 1440px;
   margin: 0 auto;
