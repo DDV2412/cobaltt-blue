@@ -42,9 +42,6 @@
     {%- for block in section.blocks -%}
       {%- if block.type == 'link_list' -%}
         <div class="footer-col" {{ block.shopify_attributes }}>
-          {%- if block.settings.heading != blank -%}
-            <h5>{{ block.settings.heading | upcase }}</h5>
-          {%- endif -%}
           {%- if block.settings.menu != blank -%}
             {%- for link in linklists[block.settings.menu].links -%}
               <a href="{{ link.url }}">{{ link.title }}</a>
