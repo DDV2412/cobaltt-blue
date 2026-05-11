@@ -2440,6 +2440,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .collection-layout { grid-template-columns: 1fr; }
   .filter-sidebar { position: static; }
   .account-grid { grid-template-columns: 1fr; }
+  .why-col.left .why-feature:last-child{
+  transform: translateX(0)
+}
+.why-col.left .why-feature:first-child{
+  transform: translateX(0)
+}
+.why-col.right .why-feature:last-child{
+  transform: translateX(0)
+}
+.why-col.right .why-feature:first-child{
+  transform: translateX(0)
+}
 }
 
 @media (max-width: 768px) {
