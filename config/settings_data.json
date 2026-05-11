@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#1188D6",
@@ -6,9 +15,9 @@
     "color_surface": "#0C0F1A",
     "color_text": "#E8EAF0",
     "color_text_2": "#9BA3B8",
-    "font_heading": "league_gothic_n4",
     "font_body": "montserrat_n4",
     "font_size_base": 15,
+    "favicon": "shopify://shop_images/Cobalt-text-white-color.png",
     "logo_width": 120,
     "logo_text": "COBALT BLUE",
     "cart_type": "drawer",
@@ -18,7 +27,9 @@
     "product_show_share": true,
     "predictive_search_enabled": true,
     "predictive_search_type": "product,article,page",
-    "animations_enabled": true
+    "animations_enabled": true,
+    "font_heading": "league_gothic_n4",
+    "content_for_index": []
   },
   "presets": {}
 }
