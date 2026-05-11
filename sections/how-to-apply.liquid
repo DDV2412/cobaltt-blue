@@ -28,7 +28,11 @@
           {%- assign block = steps[i] -%}
           {%- if block -%}
             {%- unless forloop.first -%}
-              <div class="arrow-link" aria-hidden="true">→</div>
+              <div class="arrow-link" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65" height="8" viewBox="0 0 65 8" fill="none">
+<path d="M0.5 3.18188C0.223858 3.18188 0 3.40574 0 3.68188C0 3.95803 0.223858 4.18188 0.5 4.18188V3.68188V3.18188ZM64.8536 4.03544C65.0488 3.84018 65.0488 3.52359 64.8536 3.32833L61.6716 0.146351C61.4763 -0.0489113 61.1597 -0.0489113 60.9645 0.146351C60.7692 0.341613 60.7692 0.658195 60.9645 0.853458L63.7929 3.68188L60.9645 6.51031C60.7692 6.70557 60.7692 7.02216 60.9645 7.21742C61.1597 7.41268 61.4763 7.41268 61.6716 7.21742L64.8536 4.03544ZM0.5 3.68188V4.18188H64.5V3.68188V3.18188H0.5V3.68188Z" fill="#1188D6"/>
+</svg>
+              </div>
             {%- endunless -%}
             <div class="step" {{ block.shopify_attributes }}>
               <div class="num" aria-hidden="true">{{ block.settings.number | default: forloop.index | prepend: '0' | slice: -2, 2 }}</div>
