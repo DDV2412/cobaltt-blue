@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main-about": {
+      "type": "main-about",
+      "blocks": {
+        "story1": {
+          "type": "story",
+          "settings": {
+            "label": "The Beginning",
+            "heading": "Where It Started",
+            "body": "<p>In 2019, our founder tried every consumer ceramic coating on the market and was left disappointed. The instructions were confusing, the results were patchy, and none of them lasted more than a year.</p><p>So we built something better.</p>",
+            "image_right": false
+          }
+        },
+        "story2": {
+          "type": "story",
+          "settings": {
+            "label": "The Formula",
+            "heading": "Three Years of R&D",
+            "body": "<p>We partnered with a ceramics lab to push SiO₂ concentration to 70% — the highest of any consumer kit. Every batch is tested for hardness, hydrophobicity, and UV resistance before it ships.</p>",
+            "image_right": true
+          }
+        },
+        "val1": {
+          "type": "value",
+          "settings": {
+            "title": "Transparency",
+            "description": "We publish our SiO₂ concentration, cure times, and independent test results. No marketing fluff."
+          }
+        },
+        "val2": {
+          "type": "value",
+          "settings": {
+            "title": "Accessibility",
+            "description": "Professional results shouldn't require a professional. Every product is engineered for DIY success."
+          }
+        },
+        "val3": {
+          "type": "value",
+          "settings": {
+            "title": "Responsibility",
+            "description": "Zero VOCs, biodegradable packaging, carbon-offset shipping. Good for your car and the planet."
+          }
+        },
+        "stat1": {
+          "type": "stat",
+          "settings": { "value": "14,200+", "label": "Cars Protected" }
+        },
+        "stat2": {
+          "type": "stat",
+          "settings": { "value": "4.9★", "label": "Average Rating" }
+        },
+        "stat3": {
+          "type": "stat",
+          "settings": { "value": "5 YR", "label": "Protection Life" }
+        },
+        "stat4": {
+          "type": "stat",
+          "settings": { "value": "70%", "label": "SiO₂ Concentration" }
+        }
+      },
+      "block_order": ["story1", "story2", "val1", "val2", "val3", "stat1", "stat2", "stat3", "stat4"],
+      "settings": {
+        "eyebrow": "Our Story",
+        "heading": "BUILT FOR PEOPLE WHO CARE.",
+        "subheading": "Cobalt Blue started in a garage with one obsession: why couldn't professional-grade ceramic coating be simple enough for anyone?",
+        "mission": "We believe your car deserves the same protection the pros use — without the $2,000 detail bill.",
+        "values_heading": "WHAT WE STAND FOR",
+        "cta_heading": "READY TO PROTECT YOUR RIDE?",
+        "cta_btn_label": "Shop Now"
+      }
+    }
+  },
+  "order": ["main-about"]
+}

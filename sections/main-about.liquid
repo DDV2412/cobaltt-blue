@@ -1,0 +1,340 @@
+{% comment %} About Page Section {% endcomment %}
+
+<!-- Hero -->
+<section class="about-hero" aria-labelledby="about-heading">
+  {%- if section.settings.hero_image != blank -%}
+    <div class="about-hero__bg" style="background-image:url('{{ section.settings.hero_image | image_url: width: 1600 }}');" aria-hidden="true"></div>
+  {%- endif -%}
+  <div class="about-hero__inner">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+    {%- endif -%}
+    <h1 id="about-heading">{{ section.settings.heading | default: 'OUR STORY' }}</h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="about-hero__sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<!-- Mission -->
+{%- if section.settings.mission != blank -%}
+  <div class="about-mission">
+    <blockquote class="about-mission__text reveal">{{ section.settings.mission }}</blockquote>
+  </div>
+{%- endif -%}
+
+<!-- Story + value blocks -->
+{%- for block in section.blocks -%}
+
+  {%- if block.type == 'story' -%}
+    <div class="about-story {% if block.settings.image_right %}about-story--flip{% endif %} reveal" {{ block.shopify_attributes }}>
+      <div class="about-story__text">
+        {%- if block.settings.label != blank -%}
+          <div class="eyebrow">{{ block.settings.label }}</div>
+        {%- endif -%}
+        {%- if block.settings.heading != blank -%}
+          <h2>{{ block.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if block.settings.body != blank -%}
+          <div class="about-story__body rte">{{ block.settings.body }}</div>
+        {%- endif -%}
+      </div>
+      <div class="about-story__media">
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 720 }}"
+            alt="{{ block.settings.image.alt | default: block.settings.heading }}"
+            loading="lazy"
+            width="720"
+            height="480"
+          >
+        {%- else -%}
+          <div class="about-story__placeholder" aria-hidden="true"></div>
+        {%- endif -%}
+      </div>
+    </div>
+
+  {%- elsif block.type == 'value' -%}
+    {%- unless forloop.first and section.blocks[forloop.index0 | minus: 1].type != 'value' -%}
+    {%- endunless -%}
+
+  {%- elsif block.type == 'stat' -%}
+    {%- comment -%}handled in stats row below{%- endcomment -%}
+
+  {%- endif -%}
+{%- endfor -%}
+
+<!-- Values grid -->
+{%- assign value_blocks = section.blocks | where: 'type', 'value' -%}
+{%- if value_blocks.size > 0 -%}
+  <div class="about-values">
+    <div class="about-values__inner reveal">
+      {%- if section.settings.values_heading != blank -%}
+        <h2 class="about-values__title">{{ section.settings.values_heading }}</h2>
+      {%- endif -%}
+      <div class="about-values__grid">
+        {%- for block in value_blocks -%}
+          <div class="about-value-card reveal" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <div class="about-value-card__icon">
+                <img src="{{ block.settings.icon | image_url: width: 64 }}" alt="" width="32" height="32" loading="lazy">
+              </div>
+            {%- else -%}
+              <div class="about-value-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+              </div>
+            {%- endif -%}
+            <h3>{{ block.settings.title | upcase }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p>{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<!-- Stats bar -->
+{%- assign stat_blocks = section.blocks | where: 'type', 'stat' -%}
+{%- if stat_blocks.size > 0 -%}
+  <div class="about-stats reveal">
+    {%- for block in stat_blocks -%}
+      <div class="about-stat" {{ block.shopify_attributes }}>
+        <div class="about-stat__val">{{ block.settings.value }}</div>
+        <div class="about-stat__label">{{ block.settings.label }}</div>
+      </div>
+      {%- unless forloop.last -%}<div class="about-stat__sep" aria-hidden="true"></div>{%- endunless -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+<!-- Bottom CTA -->
+{%- if section.settings.cta_heading != blank -%}
+  <div class="about-cta reveal">
+    <h2>{{ section.settings.cta_heading }}</h2>
+    {%- if section.settings.cta_btn_label != blank -%}
+      <a href="{{ section.settings.cta_btn_url | default: routes.all_products_collection_url }}" class="btn btn-primary">
+        {{ section.settings.cta_btn_label }}
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "About page",
+  "tag": "section",
+  "class": "section-main-about",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading",
+      "default": "BUILT FOR PEOPLE WHO CARE."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Cobalt Blue started in a garage with one obsession: why couldn't professional-grade ceramic coating be simple enough for anyone?"
+    },
+    {
+      "type": "header",
+      "content": "Mission statement"
+    },
+    {
+      "type": "textarea",
+      "id": "mission",
+      "label": "Mission statement (large pull-quote)",
+      "default": "We believe your car deserves the same protection the pros use — without the $2,000 detail bill."
+    },
+    {
+      "type": "header",
+      "content": "Values section"
+    },
+    {
+      "type": "text",
+      "id": "values_heading",
+      "label": "Values section heading",
+      "default": "WHAT WE STAND FOR"
+    },
+    {
+      "type": "header",
+      "content": "Bottom CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "READY TO PROTECT YOUR RIDE?"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label",
+      "label": "CTA button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_url",
+      "label": "CTA button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label / eyebrow"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Where It Started"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body text",
+          "default": "<p>In 2019, our founder tried every consumer ceramic coating on the market and was left disappointed. The instructions were confusing, the results were patchy, and none of them lasted more than a year.</p><p>So we built something better.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "image_right",
+          "label": "Image on right",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Value card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Transparency"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We publish our SiO₂ concentration, cure times, and independent test results. No marketing fluff."
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "14,200+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Cars Protected"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About page",
+      "blocks": [
+        {
+          "type": "story",
+          "settings": {
+            "label": "The Beginning",
+            "heading": "Where It Started",
+            "body": "<p>In 2019, our founder tried every consumer ceramic coating on the market and was left disappointed. The instructions were confusing, the results were patchy, and none of them lasted more than a year.</p><p>So we built something better.</p>",
+            "image_right": false
+          }
+        },
+        {
+          "type": "story",
+          "settings": {
+            "label": "The Formula",
+            "heading": "Three Years of R&D",
+            "body": "<p>We partnered with a ceramics lab to push SiO₂ concentration to 70% — the highest of any consumer kit. Every batch is tested for hardness, hydrophobicity, and UV resistance before it ships.</p>",
+            "image_right": true
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Transparency",
+            "description": "We publish our SiO₂ concentration, cure times, and independent test results. No marketing fluff."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Accessibility",
+            "description": "Professional results shouldn't require a professional. Every product is engineered for DIY success."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Responsibility",
+            "description": "Zero VOCs, biodegradable packaging, carbon-offset shipping. Good for your car and the planet."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": { "value": "14,200+", "label": "Cars Protected" }
+        },
+        {
+          "type": "stat",
+          "settings": { "value": "4.9★", "label": "Average Rating" }
+        },
+        {
+          "type": "stat",
+          "settings": { "value": "5 YR", "label": "Protection Life" }
+        },
+        {
+          "type": "stat",
+          "settings": { "value": "70%", "label": "SiO₂ Concentration" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

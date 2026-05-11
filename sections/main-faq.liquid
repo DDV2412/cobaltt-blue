@@ -1,0 +1,267 @@
+{% comment %} FAQ Page Section {% endcomment %}
+
+<!-- Page hero -->
+<div class="faq-page-hero">
+  <div class="faq-page-hero__inner reveal">
+    {%- if section.settings.eyebrow != blank -%}
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+    {%- endif -%}
+    <h1>{{ section.settings.heading | default: 'FREQUENTLY ASKED' }}</h1>
+    {%- if section.settings.subheading != blank -%}
+      <p>{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<!-- FAQ accordion -->
+<div class="faq-page-body">
+  {%- assign categories = '' -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'faq_item' -%}
+      {%- assign cat = block.settings.category | default: '' -%}
+      {%- unless categories contains cat -%}
+        {%- assign categories = categories | append: cat | append: '|' -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign category_list = categories | split: '|' -%}
+
+  {%- for cat in category_list -%}
+    {%- assign cat_items = section.blocks | where: 'type', 'faq_item' -%}
+    {%- if cat != '' -%}
+      <div class="faq-page-group reveal">
+        <h2 class="faq-page-group__title">{{ cat | upcase }}</h2>
+        <div class="faq-list">
+          {%- for block in cat_items -%}
+            {%- if block.settings.category == cat -%}
+              <div class="faq-item {% if forloop.first and section.settings.open_first and forloop.parentloop.first %}open{% endif %}" {{ block.shopify_attributes }}>
+                <button
+                  class="faq-q"
+                  aria-expanded="false"
+                  aria-controls="faq-p-{{ block.id }}"
+                >
+                  {{ block.settings.question | upcase }}
+                  <span class="plus" aria-hidden="true">+</span>
+                </button>
+                <div class="faq-a" id="faq-p-{{ block.id }}" role="region">
+                  <div class="faq-a-inner">{{ block.settings.answer }}</div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="faq-list faq-page-group reveal">
+        {%- for block in cat_items -%}
+          {%- assign block_cat = block.settings.category | default: '' -%}
+          {%- if block_cat == '' -%}
+            <div class="faq-item {% if forloop.first and section.settings.open_first %}open{% endif %}" {{ block.shopify_attributes }}>
+              <button
+                class="faq-q"
+                aria-expanded="{% if forloop.first and section.settings.open_first %}true{% else %}false{% endif %}"
+                aria-controls="faq-p-{{ block.id }}"
+              >
+                {{ block.settings.question | upcase }}
+                <span class="plus" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-a" id="faq-p-{{ block.id }}" role="region">
+                <div class="faq-a-inner">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<!-- Contact CTA -->
+{%- if section.settings.show_contact_cta -%}
+  <div class="faq-page-cta reveal">
+    <div class="faq-page-cta__inner">
+      <div>
+        <h3>{{ section.settings.cta_heading | default: "STILL HAVE QUESTIONS?" }}</h3>
+        <p>{{ section.settings.cta_subtext | default: "Our team replies within 24 hours." }}</p>
+      </div>
+      {%- if section.settings.cta_btn_label != blank -%}
+        <a href="{{ section.settings.cta_btn_url | default: '/pages/contact' }}" class="btn btn-primary">
+          {{ section.settings.cta_btn_label }}
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ page",
+  "tag": "section",
+  "class": "section-main-faq",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Got Questions?"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FREQUENTLY ASKED"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Everything you need to know before, during, and after your application."
+    },
+    {
+      "type": "header",
+      "content": "Accordion"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first item by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Contact CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_cta",
+      "label": "Show contact CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "STILL HAVE QUESTIONS?"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtext",
+      "label": "CTA subtext",
+      "default": "Our team replies within 24 hours."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_label",
+      "label": "CTA button label",
+      "default": "Contact Support"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_url",
+      "label": "CTA button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category (optional grouping)",
+          "info": "Items with the same category are grouped together. Leave blank for no grouping."
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How does this product work?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>This is the answer to the question above.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ page",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How is this different from wax or sealant?",
+            "answer": "<p>Wax and sealants sit on top of paint and wash off within 3–6 months. Ceramic coating chemically bonds to the clear-coat, creating a hard, hydrophobic, UV-resistant layer that lasts years.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "What vehicles can I use this on?",
+            "answer": "<p>Cobalt Blue works on all automotive paints including single-stage, basecoat/clearcoat, matte, and satin finishes. Also bonds to glass, metal, and plastic trim.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How many vehicles does one bottle cover?",
+            "answer": "<p>The 50ml kit covers up to 3 vehicles. The 100ml Pro covers up to 7, and the 200ml Bundle covers up to 15.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Application",
+            "question": "Do I need to paint-correct first?",
+            "answer": "<p>Ceramic coating will lock in whatever condition the paint is in. If your paint has swirl marks, we recommend a light polish first.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Application",
+            "question": "How long does application take?",
+            "answer": "<p>A full vehicle typically takes 2–4 hours including prep. The coating itself takes around 45–60 minutes for a standard car. Curing is 24 hours before water contact, 7 days for full hardness.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Application",
+            "question": "What temperature should I apply in?",
+            "answer": "<p>Apply between 10°C and 30°C (50°F–86°F) in a shaded area out of direct sunlight. Humidity below 70% is ideal.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Orders & Returns",
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day satisfaction guarantee. Contact us within 30 days for a full refund — no questions asked.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Orders & Returns",
+            "question": "Do you ship internationally?",
+            "answer": "<p>Yes, we ship to over 40 countries. International orders typically arrive within 7–14 business days. Duties and taxes may apply.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -4,19 +4,9 @@
   <div class="footer-grid">
     <!-- Brand column -->
     <div class="footer-brand">
-      {%- if section.settings.logo != blank -%}
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
-          <img src="{{ section.settings.logo | image_url: height: 40 }}" alt="{{ shop.name }}" height="40" style="margin-bottom:14px;">
-        </a>
-      {%- else -%}
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}" style="display:block;margin-bottom:14px;">
-          <img src="{{ 'Cobalt-text-white-color.png' | asset_url }}" alt="{{ shop.name }}" height="32" loading="lazy">
-        </a>
-      {%- endif -%}
-
-      {%- if section.settings.brand_desc != blank -%}
-        <p>{{ section.settings.brand_desc }}</p>
-      {%- endif -%}
+      <a href="{{ routes.root_url }}" class="footer-brand-name" aria-label="{{ shop.name }}">
+        {{ section.settings.brand_name | default: shop.name }}
+      </a>
 
       {%- if section.settings.show_social -%}
         <div class="footer-social">

@@ -17,33 +17,18 @@
         "link_col_1": {
           "type": "link_list",
           "settings": {
-            "heading": "Products",
-            "menu": "footer-products"
-          }
-        },
-        "link_col_2": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Support",
-            "menu": "footer-support"
-          }
-        },
-        "link_col_3": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Company",
-            "menu": "footer-company"
+            "heading": "Navigation",
+            "menu": "main-menu"
           }
         }
       },
       "block_order": [
-        "link_col_1",
-        "link_col_2",
-        "link_col_3"
+        "link_col_1"
       ],
       "settings": {
+        "brand_name": "COBALT.BLUE",
         "show_social": true,
-        "brand_desc": "Professional-grade ceramic car coating. Engineered for enthusiasts, usable by anyone.",
+        "footer_menu": "footer",
         "show_country_selector": false,
         "show_locale_selector": false,
         "show_payment_icons": true

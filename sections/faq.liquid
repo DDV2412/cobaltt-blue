@@ -6,7 +6,7 @@
       {%- if section.settings.eyebrow != blank -%}
         <div class="eyebrow">{{ section.settings.eyebrow }}</div>
       {%- endif -%}
-      <h2 id="faq-heading">{{ section.settings.heading | default: 'FREQUENTLY<br/>ASKED' }}</h2>
+      <h2 id="faq-heading">{{ section.settings.heading | default: 'FREQUENTLY ASKED' }}</h2>
       {%- if section.settings.subheading != blank -%}
         <p>{{ section.settings.subheading }}</p>
       {%- endif -%}
@@ -63,10 +63,10 @@
       "default": "Got Questions?"
     },
     {
-      "type": "richtext",
+      "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "<p>FREQUENTLY<br/>ASKED</p>"
+      "default": "FREQUENTLY ASKED"
     },
     {
       "type": "textarea",

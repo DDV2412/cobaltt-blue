@@ -18,28 +18,14 @@
         style="background-image: url('{{ section.settings.featured_image | image_url: width: 1240 }}');"
         role="img"
         aria-label="{{ section.settings.featured_caption_title }}"
-      >
-        <div class="caption">
-          {%- if section.settings.featured_caption_title != blank -%}
-            <h3>{{ section.settings.featured_caption_title }}</h3>
-          {%- endif -%}
-          {%- if section.settings.featured_caption_text != blank -%}
-            <p>{{ section.settings.featured_caption_text }}</p>
-          {%- endif -%}
-        </div>
-      </div>
+      ></div>
     {%- else -%}
       <div
         class="tile featured"
         style="background-image: url('{{ 'tile-before-after.png' | asset_url }}'); background-size: cover; background-position: center;"
         role="img"
         aria-label="{{ section.settings.featured_caption_title | default: 'UNTOUCHED VS COATED' }}"
-      >
-        <div class="caption">
-          <h3>{{ section.settings.featured_caption_title | default: 'UNTOUCHED VS COATED' }}</h3>
-          <p>{{ section.settings.featured_caption_text | default: 'Same panel, same day. Eight months of weather, untouched.' }}</p>
-        </div>
-      </div>
+      ></div>
     {%- endif -%}
 
     <!-- Stat tiles -->

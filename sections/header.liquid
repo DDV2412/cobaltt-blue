@@ -17,29 +17,6 @@
     </a>
   {%- endif -%}
 
-  {%- if section.settings.menu != blank -%}
-    <nav class="nav-links" aria-label="{{ 'accessibility.nav.main_menu' | t }}">
-      {%- for link in linklists[section.settings.menu].links -%}
-        {%- if link.links.size > 0 -%}
-          <div class="nav-item">
-            <a
-              href="{{ link.url }}"
-              class="nav-link"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >{{ link.title }}</a>
-            <div class="nav-dropdown" role="menu">
-              {%- for child in link.links -%}
-                <a href="{{ child.url }}" role="menuitem">{{ child.title }}</a>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- else -%}
-          <a href="{{ link.url }}" class="nav-link" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
-        {%- endif -%}
-      {%- endfor -%}
-    </nav>
-  {%- endif -%}
 
   <div class="nav-right">
     {%- if section.settings.show_search -%}
@@ -68,7 +45,7 @@
     </button>
 
     {%- if section.settings.show_buy_btn -%}
-      <a href="{{ section.settings.buy_btn_url | default: routes.all_products_collection_url }}" class="btn btn-primary btn-pill-sm">
+      <a href="{{ section.settings.buy_btn_url | default: routes.all_products_collection_url }}" class="btn btn-primary btn-pill-sm nav-buy-btn">
         {{ section.settings.buy_btn_label | default: 'Buy Now' }}
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
@@ -103,18 +80,6 @@
     </button>
   </div>
 
-  <div class="mobile-nav-links">
-    {%- if section.settings.menu != blank -%}
-      {%- for link in linklists[section.settings.menu].links -%}
-        <a href="{{ link.url }}" class="mobile-nav-link">{{ link.title }}</a>
-        {%- if link.links.size > 0 -%}
-          {%- for child in link.links -%}
-            <a href="{{ child.url }}" class="mobile-nav-link" style="padding-left:28px;font-size:14px;opacity:0.75;">{{ child.title }}</a>
-          {%- endfor -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endif -%}
-  </div>
 
   <div class="mobile-nav-actions">
     <button class="btn btn-ghost" data-open-cart>

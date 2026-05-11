@@ -400,7 +400,9 @@
           e.target.classList.add('in');
           // Animate rating bars
           if (e.target.id === 'rsBars' || e.target.closest('#rsBars')) {
-            $$('#rsBars .fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
+            setTimeout(() => {
+              $$('#rsBars .fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
+            }, 100);
           }
           io.unobserve(e.target);
         }

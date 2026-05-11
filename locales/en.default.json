@@ -431,5 +431,20 @@
 
   "onboarding": {
     "product_title": "Example product title"
+  },
+
+  "gift_cards": {
+    "issued": {
+      "title": "{{ value }} Gift Card for {{ shop }}",
+      "subtext": "Use this gift card at checkout",
+      "gift_card_code": "Gift card code",
+      "qr_image_alt": "QR code — scan to use gift card",
+      "remaining_html": "Balance: {{ balance }}",
+      "expired": "Gift card expired on {{ expiry_date }}",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "shop_link": "Shop now",
+      "print": "Print",
+      "expiration_date": "Expires {{ expiry_date }}"
+    }
   }
 }
