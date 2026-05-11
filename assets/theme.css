@@ -727,7 +727,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
   max-width: 1440px;
   margin: 0 auto;
