@@ -2440,7 +2440,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .address-name-grid { grid-template-columns: 1fr; }
   .bento { grid-template-columns: 1fr 1fr; }
   .bento .tile.featured { grid-column: span 2; }
-  .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-grid { display: flex; flex-direction: column }
   .reviews-summary {
     display: grid;
     grid-template-columns: auto 1fr;
