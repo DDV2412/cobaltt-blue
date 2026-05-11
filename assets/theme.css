@@ -868,9 +868,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: absolute;
   width: 160px; height: 160px;
   border-radius: 50%;
-  background: rgba(27,79,255,0.18);
+  background: rgba(27,79,255,0.15);
   top: -40px; left: -40px;
-  filter: blur(2px);
+  filter: blur(40px);
 }
 .tile-orb.cyan {
   background: rgba(77,200,255,0.1);
