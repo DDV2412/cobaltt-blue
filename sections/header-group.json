@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -5,23 +14,55 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "block1": { "type": "announcement", "settings": { "text": "Free Shipping on Orders Over $60" } },
-        "block2": { "type": "announcement", "settings": { "text": "30-Day Satisfaction Guarantee" } },
-        "block3": { "type": "announcement", "settings": { "text": "9H Professional Grade" } },
-        "block4": { "type": "announcement", "settings": { "text": "Free Lifetime Support" } }
+        "block1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping on Orders Over $60"
+          }
+        },
+        "block2": {
+          "type": "announcement",
+          "settings": {
+            "text": "30-Day Satisfaction Guarantee"
+          }
+        },
+        "block3": {
+          "type": "announcement",
+          "settings": {
+            "text": "9H Professional Grade"
+          }
+        },
+        "block4": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Lifetime Support"
+          }
+        }
       },
-      "block_order": ["block1", "block2", "block3", "block4"],
-      "settings": { "show_announcement": true }
+      "block_order": [
+        "block1",
+        "block2",
+        "block3",
+        "block4"
+      ],
+      "settings": {
+        "show_announcement": true
+      }
     },
     "header": {
       "type": "header",
       "settings": {
+        "logo_height": 48,
         "menu": "main-menu",
         "show_search": true,
         "show_buy_btn": true,
-        "buy_btn_label": "Buy Now — $89"
+        "buy_btn_label": "Buy Now",
+        "buy_btn_url": ""
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
