@@ -17,8 +17,8 @@
         </div>
       </div>
       <div class="rs-bars" aria-label="Rating breakdown">
-        {%- assign bar_data = '87,9,3,1,0' | split: ',' -%}
-        {%- for pct in section.settings.bar_values | split: ',' -%}
+        {%- assign bar_values_arr = section.settings.bar_values | split: ',' -%}
+        {%- for pct in bar_values_arr -%}
           {%- assign star_num = 5 | minus: forloop.index0 -%}
           <div class="rs-bar">
             <span class="star-num" aria-hidden="true">{{ star_num }}★</span>
