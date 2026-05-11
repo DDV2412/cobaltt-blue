@@ -846,9 +846,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .bento {
   display: grid;
   grid-template-columns: 620px 1fr 1fr;
-  grid-template-rows: 260px 260px;
   gap: 12px;
-  height: 532px;
   max-width: 1440px;
   margin: 0 auto;
 }
