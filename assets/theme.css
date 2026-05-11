@@ -2415,8 +2415,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .hero h1 { font-size: 80px; }
   .hero { padding: 80px 40px 60px; }
   .section, .hero-2 { padding: 80px 40px; }
-  .bento { grid-template-columns: 1fr 1fr 1fr; height: auto; }
-  .bento .tile.featured { grid-row: span 1; grid-column: span 3; min-height: 420px  }
+  .bento { grid-template-columns: 1fr 1fr; }
+  .bento .tile.featured { grid-row: span 1; grid-column: span 2; min-height: 420px  }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .faq { grid-template-columns: 1fr; gap: 40px; }
   .faq-side { max-width: 480px; }
