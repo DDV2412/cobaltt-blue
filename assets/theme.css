@@ -2544,6 +2544,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     width: 90%;
     aspect-ratio: 1/1;
   }
+  .why-center__img{
+    width: 100%
+  }
 }
 
 /* ---- MOBILE NAV DRAWER ---- */
