@@ -863,6 +863,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  min-height: 532px;
 }
 .tile.featured::after {
   content: '';
