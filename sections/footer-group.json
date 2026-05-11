@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer group",
@@ -27,15 +36,19 @@
           }
         }
       },
-      "block_order": ["link_col_1", "link_col_2", "link_col_3"],
+      "block_order": [
+        "link_col_1",
+        "link_col_2",
+        "link_col_3"
+      ],
       "settings": {
-        "show_payment_icons": true,
-        "show_locale_selector": true,
         "show_country_selector": true,
-        "newsletter_heading": "JOIN THE CLUB",
-        "newsletter_subtext": "Get exclusive tips, early access, and members-only discounts."
+        "show_locale_selector": true,
+        "show_payment_icons": true
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }
