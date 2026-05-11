@@ -41,10 +41,10 @@
     <!-- Nav columns -->
     {%- for block in section.blocks -%}
       {%- if block.type == 'link_list' -%}
-        <div class="footer-col" {{ block.shopify_attributes }}>
+        <div class="" {{ block.shopify_attributes }}>
           {%- if block.settings.menu != blank -%}
             {%- for link in linklists[block.settings.menu].links -%}
-              <a href="{{ link.url }}">{{ link.title }}</a>
+              <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
             {%- endfor -%}
           {%- endif -%}
         </div>
