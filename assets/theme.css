@@ -772,7 +772,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .why-center .ring.r1 {
   width: 420px; height: 420px;
-  border: 2px solid rgba(17,136,214,0.9);
+  border: 4px solid rgba(17,136,214,0.9);
 }
 .why-center .ring.r2 {
   width: 490px; height: 490px;
