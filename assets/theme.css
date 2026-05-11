@@ -2557,7 +2557,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 480px) {
   .hero h1 { font-size: 52px; }
   .bento { grid-template-columns: 1fr; }
-  .bento .tile.featured { grid-column: span 1; }
+  .bento .tile.featured { grid-column: span 1; min-height: 380px }
   .footer-grid { grid-template-columns: 1fr; }
   .apply-grid { grid-template-columns: 1fr; }
   .apply-grid .arrow-link { display: none; }
