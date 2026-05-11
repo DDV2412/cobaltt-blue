@@ -1274,6 +1274,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   overflow: hidden;
   position: relative;
+  background: linear-gradient(135deg, #0B1840 14.14%, #080F2C 84.87%);
+
 }
 .cta-inner h2 {
   font-family: var(--font-heading);
@@ -1282,7 +1284,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   margin: 18px 0 0;
   letter-spacing: 0.02em;
   position: relative;
-  background: linear-gradient(135deg, #0B1840 14.14%, #080F2C 84.87%);
 }
 .cta-actions {
   display: flex;
