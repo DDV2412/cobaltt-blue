@@ -1096,6 +1096,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 32px;
+  
 }
 .rs-score {
   font-family: var(--font-heading);
