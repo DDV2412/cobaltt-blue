@@ -410,17 +410,6 @@
         "btn_secondary_scroll": "#why",
         "fine_print": "Free shipping · 30-day guarantee"
       }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "eyebrow": "Stay in the know",
-        "heading": "JOIN THE CLUB",
-        "subheading": "Get exclusive tips, early access to new products, and members-only discounts.",
-        "placeholder": "Your email address",
-        "btn_label": "Subscribe",
-        "disclaimer": "No spam. Unsubscribe anytime."
-      }
     }
   },
   "order": [
@@ -432,7 +421,6 @@
     "shield-cta",
     "reviews",
     "faq",
-    "cta-banner",
-    "newsletter"
+    "cta-banner"
   ]
 }
