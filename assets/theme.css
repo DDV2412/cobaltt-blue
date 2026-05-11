@@ -727,7 +727,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
+  gap: 48px;
   align-items: center;
   max-width: 1440px;
   margin: 0 auto;
@@ -742,7 +742,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: flex-start;
   position: relative;
 }
-.why-col.left .why-feature { flex-direction: row; text-align: left; }
+.why-col.left .why-feature { flex-direction: row; text-align: right; }
 .why-feature .icon {
   width: 54px; height: 54px;
   border-radius: 12px;
@@ -756,7 +756,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transition: all 0.3s ease;
 }
 .why-col .why-feature:::last-child{
-
+  right: -20px
 }
 .why-feature:hover .icon {
   background: rgba(27,79,255,0.18);
