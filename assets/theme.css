@@ -2450,6 +2450,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     padding: 20px;
     grid-column: none;
   }
+  .step{
+    max-width: none;
+  }
   .rs-score { grid-area: score; font-size: 56px; line-height: 1; align-self: center; }
   .rs-meta { grid-area: meta; border-right: 0; padding-right: 0; min-width: unset; align-self: center; }
   .rs-bars { grid-area: bars; max-width: 100%; }
