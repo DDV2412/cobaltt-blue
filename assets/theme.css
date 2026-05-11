@@ -189,6 +189,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: sticky;
   top: 0;
   z-index: 100;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .nav-logo img { height: 48px; width: auto; }
 .nav-links {
