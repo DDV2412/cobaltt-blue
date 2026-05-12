@@ -34,19 +34,29 @@
 
       <div class="hero-cta">
         {%- if section.settings.btn_primary_label != blank -%}
-          <button
-            class="btn btn-primary"
-            id="heroBuy"
-            data-add-to-cart
-            data-variant-id="{{ all_products[section.settings.product].selected_or_first_available_variant.id }}"
-            data-qty="1"
-          >
-            {{ section.settings.btn_primary_label }}
-            {%- if section.settings.show_price -%}
-            <span id="heroPrice">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
-            {%- endif -%}
-            <span class="arrow" aria-hidden="true">↗</span>
-          </button>
+          {%- if section.settings.btn_primary_url != blank -%}
+            <a
+              class="btn btn-primary"
+              href="{{ section.settings.btn_primary_url }}"
+            >
+              {{ section.settings.btn_primary_label }}
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          {%- else -%}
+            <button
+              class="btn btn-primary"
+              id="heroBuy"
+              data-add-to-cart
+              data-variant-id="{{ all_products[section.settings.product].selected_or_first_available_variant.id }}"
+              data-qty="1"
+            >
+              {{ section.settings.btn_primary_label }}
+              {%- if section.settings.show_price -%}
+              <span id="heroPrice">{{ all_products[section.settings.product].selected_or_first_available_variant.price | money }}</span>
+              {%- endif -%}
+              <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+          {%- endif -%}
         {%- endif -%}
         {%- if section.settings.btn_secondary_label != blank -%}
           <a
@@ -172,6 +182,12 @@
       "id": "btn_primary_label",
       "label": "Primary button label",
       "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_url",
+      "label": "Primary button URL",
+      "info": "If set, button links to this URL. Leave blank to use Add to Cart behavior."
     },
     {
       "type": "text",
