@@ -1695,6 +1695,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-family: inherit !important;
   cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  height: auto !important;
 }
 .shopify-payment-button__button--unbranded {
   background: transparent !important;
