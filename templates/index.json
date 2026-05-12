@@ -19,6 +19,7 @@
         "default_variant": 1,
         "show_price": true,
         "btn_primary_label": "Shop Now  — $89",
+        "btn_primary_url": "shopify://products/cobalt-blue-9h-ceramic-coat",
         "btn_secondary_label": "View All Options",
         "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#why"
@@ -286,6 +287,7 @@
         "description": "Industry-leading ceramic coatings, PPF, and paint protection engineered for maximum gloss, durability, and value retention. Your car deserves nothing less.",
         "product": "",
         "btn_primary_label": "Shop Now",
+        "btn_primary_url": "shopify://products/cobalt-blue-9h-ceramic-coat",
         "btn_secondary_label": "View All Options",
         "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#results",
@@ -411,6 +413,7 @@
         "heading": "YOUR CARDESERVESBETTER.",
         "product": "",
         "btn_primary_label": "Shop Now",
+        "btn_primary_url": "shopify://products/cobalt-blue-9h-ceramic-coat",
         "btn_secondary_label": "View All Options",
         "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#why",
