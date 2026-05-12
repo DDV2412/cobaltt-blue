@@ -2447,7 +2447,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .section, .hero-2 { padding: 80px 40px; }
   .bento { grid-template-columns: 1fr 1fr; }
   .bento .tile.featured { grid-row: span 1; grid-column: span 2; min-height: 420px  }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
   .faq { grid-template-columns: 1fr; gap: 40px; }
   .faq-side { max-width: 480px; }
 }
@@ -2526,7 +2525,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .cart-btn { font-size: 0; gap: 0; padding: 10px 14px; }
   .cart-btn .cart-count { font-size: 11px; }
   .footer { padding: 40px 24px 24px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .cta { padding: 40px 16px; }
   .cta-wrap { border-radius: var(--radius-lg); padding: 3px; }
   .cta-inner { padding: 32px 20px; grid-template-columns: 1fr; border-radius: 18px; gap: 28px; justify-content: center; align-items: center }
@@ -2589,7 +2587,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .hero h1 { font-size: 52px; }
   .bento { grid-template-columns: 1fr; }
   .bento .tile.featured { grid-column: span 1; min-height: 380px }
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+   }
   .apply-grid { grid-template-columns: 1fr; }
   .apply-grid .arrow-link { display: none; }
   .products-grid { grid-template-columns: 1fr; }
