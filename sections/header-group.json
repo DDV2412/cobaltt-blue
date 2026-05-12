@@ -57,7 +57,7 @@
         "show_search": true,
         "show_buy_btn": true,
         "buy_btn_label": "Buy Now",
-        "buy_btn_url": ""
+        "buy_btn_url": "shopify://collections/all"
       }
     }
   },

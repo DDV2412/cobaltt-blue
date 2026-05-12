@@ -18,9 +18,9 @@
         "product": "",
         "default_variant": 1,
         "show_price": true,
-        "btn_primary_label": "Shop Now  &mdash; $89",
+        "btn_primary_label": "Shop Now  — $89",
         "btn_secondary_label": "View All Options",
-        "btn_secondary_url": "",
+        "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#why"
       }
     },
@@ -222,7 +222,7 @@
         "section_id": "results",
         "heading": "THE RESULTS SPEAK.",
         "btn_label": "View Full Gallery",
-        "btn_url": "",
+        "btn_url": "shopify://products/cobalt-blue-9h-ceramic-coat",
         "featured_caption_title": "UNTOUCHED VS COATED",
         "featured_caption_text": "Same panel, same day. Left untreated, right with two layers of Cobalt Blue. Eight months of weather, untouched."
       }
@@ -287,7 +287,7 @@
         "product": "",
         "btn_primary_label": "Shop Now",
         "btn_secondary_label": "View All Options",
-        "btn_secondary_url": "",
+        "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#results",
         "angle_label": "110° CONTACT ANGLE"
       }
@@ -408,11 +408,11 @@
       "type": "cta-banner",
       "settings": {
         "eyebrow": "Limited Time — 26% OFF",
-        "heading": "YOUR CAR\nDESERVES\nBETTER.",
+        "heading": "YOUR CARDESERVESBETTER.",
         "product": "",
         "btn_primary_label": "Shop Now",
         "btn_secondary_label": "View All Options",
-        "btn_secondary_url": "",
+        "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#why",
         "fine_print": "Free shipping · 30-day guarantee"
       }
