@@ -69,6 +69,7 @@
     </div>
 
     <!-- Product Visual -->
+    {%- if section.settings.show_image -%}
     <div class="hero-visual" aria-hidden="true">
       {%- if section.settings.product_image != blank -%}
         <img
@@ -98,6 +99,7 @@
         </div>
       {%- endif -%}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -166,6 +168,12 @@
       "type": "checkbox",
       "id": "show_price",
       "label": "Show price in button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show image / visual",
       "default": true
     },
     {

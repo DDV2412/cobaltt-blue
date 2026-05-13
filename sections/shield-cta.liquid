@@ -53,18 +53,31 @@
       </div>
     </div>
 
-    <!-- Water bead visual -->
-    <div class="water-bead" aria-hidden="true">
-      <div class="surface">
-        <div class="angle-tag">{{ section.settings.angle_label | default: '110° CONTACT ANGLE' }}</div>
-        <div class="bead b1"></div>
-        <div class="bead b2"></div>
-        <div class="bead b3"></div>
-        <div class="bead b4"></div>
-        <div class="bead b5"></div>
-        <div class="bead b6"></div>
-      </div>
+    <!-- Water bead / custom image visual -->
+    {%- if section.settings.show_image -%}
+    <div class="shield-visual" aria-hidden="true">
+      {%- if section.settings.shield_image != blank -%}
+        <img
+          src="{{ section.settings.shield_image | image_url: width: 600 }}"
+          alt="{{ section.settings.shield_image.alt | default: 'Shield visual' }}"
+          width="600"
+          loading="lazy"
+          style="width:100%;height:auto;border-radius:1rem;object-fit:cover;"
+        >
+      {%- else -%}
+        <div class="water-bead">
+          <div class="surface">
+            <div class="bead b1"></div>
+            <div class="bead b2"></div>
+            <div class="bead b3"></div>
+            <div class="bead b4"></div>
+            <div class="bead b5"></div>
+            <div class="bead b6"></div>
+          </div>
+        </div>
+      {%- endif -%}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -133,10 +146,19 @@
       "label": "Secondary button scroll target (e.g. #results)"
     },
     {
-      "type": "text",
-      "id": "angle_label",
-      "label": "Contact angle badge",
-      "default": "110° CONTACT ANGLE"
+      "type": "header",
+      "content": "Visual"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show image / visual",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "shield_image",
+      "label": "Custom image (optional, replaces water bead animation)"
     }
   ],
   "presets": [
