@@ -20,7 +20,7 @@
         "show_price": true,
         "btn_primary_label": "Shop Now  — $89",
         "btn_primary_url": "shopify://products/cobalt-blue-9h-ceramic-coat",
-        "btn_secondary_label": "View All Options",
+        "btn_secondary_label": "",
         "btn_secondary_url": "shopify://collections/all",
         "btn_secondary_scroll": "#why"
       }

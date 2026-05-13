@@ -54,7 +54,7 @@
       "settings": {
         "logo_height": 48,
         "menu": "main-menu",
-        "show_search": true,
+        "show_search": false,
         "show_buy_btn": true,
         "buy_btn_label": "Buy Now",
         "buy_btn_url": "shopify://collections/all"
