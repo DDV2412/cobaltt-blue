@@ -41,11 +41,13 @@
     <!-- Nav columns -->
     {%- for block in section.blocks -%}
       {%- if block.type == 'link_list' -%}
-        {%- if block.settings.menu != blank -%}
-            {%- for link in linklists[block.settings.menu].links -%}
-              <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
-            {%- endfor -%}
-          {%- endif -%}
+        {%- if block.settings.direct_label != blank and block.settings.direct_url != blank -%}
+          <a href="{{ block.settings.direct_url }}" class="footer-link">{{ block.settings.direct_label }}</a>
+        {%- elsif block.settings.menu != blank -%}
+          {%- for link in linklists[block.settings.menu].links -%}
+            <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
+          {%- endfor -%}
+        {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -201,6 +203,21 @@
           "id": "menu",
           "label": "Menu",
           "default": "main-menu"
+        },
+        {
+          "type": "header",
+          "content": "Direct link (overrides menu)"
+        },
+        {
+          "type": "text",
+          "id": "direct_label",
+          "label": "Link label",
+          "info": "If both label and URL are set, this single link is shown instead of the menu above."
+        },
+        {
+          "type": "url",
+          "id": "direct_url",
+          "label": "Link URL"
         }
       ]
     }

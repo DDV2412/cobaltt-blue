@@ -11,7 +11,7 @@
         <p>{{ section.settings.subheading }}</p>
       {%- endif -%}
       {%- if section.settings.btn_label != blank -%}
-        <a class="btn btn-ghost btn-pill-sm" href="{{ section.settings.btn_url | default: routes.root_url }}">
+        <a class="btn btn-ghost btn-pill-sm" href="{{ section.settings.btn_url | default: '/pages/contact' }}">
           {{ section.settings.btn_label }} →
         </a>
       {%- endif -%}

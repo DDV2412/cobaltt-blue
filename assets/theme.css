@@ -816,14 +816,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   width: 540px;
   max-width: 540px;
   height: auto;
-  margin-left: -20px;
+  margin-left: 0;
   opacity: 0;
-  transform: translateY(16px) scale(0.97);
+  transform: translateY(56px) scale(0.97);
   transition: opacity 0.9s cubic-bezier(.5,0,.2,1), transform 0.9s cubic-bezier(.5,0,.2,1);
 }
 .why-center__img.fade-in {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(40px) scale(1);
 }
 
 /* ---- RESULTS / BENTO ---- */
