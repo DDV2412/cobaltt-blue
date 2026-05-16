@@ -1,29 +1,154 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "vendor": { "type": "vendor" },
-        "title": { "type": "title" },
-        "price": { "type": "price" },
-        "installments": { "type": "installments" },
-        "variant_picker": { "type": "variant_picker" },
-        "quantity": { "type": "quantity" },
-        "buy_buttons": { "type": "buy_buttons" },
-        "pickup": { "type": "pickup_availability" },
-        "description": { "type": "description" },
-        "share": { "type": "share" }
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "pickup": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "trust_badges_yffKPa": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1": "Free Shipping",
+            "badge_2": "30-Day Guarantee",
+            "badge_3": "US-Formulated"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
       },
-      "block_order": ["vendor", "title", "price", "installments", "variant_picker", "quantity", "buy_buttons", "pickup", "description", "share"],
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "installments",
+        "variant_picker",
+        "quantity",
+        "buy_buttons",
+        "pickup",
+        "trust_badges_yffKPa",
+        "description",
+        "share"
+      ],
       "settings": {}
     },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
         "heading": "You May Also Like",
-        "products_count": 4
+        "products_to_show": 4,
+        "show_vendor": false
+      }
+    },
+    "faq_kB6BBi": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_K3Xzqr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is this different from wax or sealant?",
+            "answer": "<p>Wax and sealants sit on top of paint and wash off within 3–6 months. Ceramic coating chemically bonds to the clear-coat, creating a hard, hydrophobic, UV-resistant layer that lasts years.</p>"
+          }
+        },
+        "faq_item_x7hqQk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need to paint-correct first?",
+            "answer": "<p>Ceramic coating will lock in whatever condition the paint is in. If your paint has swirl marks, we recommend a light polish first. Our kit includes guidance on assessing whether correction is needed.</p>"
+          }
+        },
+        "faq_item_WrpVTU": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What vehicles can I use this on?",
+            "answer": "<p>Cobalt Blue works on all automotive paints including single-stage, basecoat/clearcoat, matte, and satin finishes. Also bonds to glass, metal, and plastic trim.</p>"
+          }
+        },
+        "faq_item_PPUVgb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How many vehicles does one bottle cover?",
+            "answer": "<p>The 50ml kit covers up to 3 vehicles. The 100ml Pro covers up to 7, and the 200ml Bundle covers up to 15. Larger vehicles use slightly more product.</p>"
+          }
+        },
+        "faq_item_Kw4PYj": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day satisfaction guarantee. Contact us within 30 days for a full refund — no questions asked. Free replacement if the product arrives damaged.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_K3Xzqr",
+        "faq_item_x7hqQk",
+        "faq_item_WrpVTU",
+        "faq_item_PPUVgb",
+        "faq_item_Kw4PYj"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "section_id": "faq",
+        "eyebrow": "Got Questions?",
+        "heading": "FREQUENTLY ASKED",
+        "subheading": "Everything you need to know before you buy.",
+        "btn_label": "Contact Support",
+        "btn_url": "",
+        "open_first": true
       }
     }
   },
-  "order": ["main-product", "product-recommendations"]
+  "order": [
+    "main-product",
+    "product-recommendations",
+    "faq_kB6BBi"
+  ]
 }
