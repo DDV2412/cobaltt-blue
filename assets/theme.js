@@ -89,7 +89,15 @@
     const track = $('#announceTrack');
     if (!track || track.children.length === 0) return;
     const originalContent = track.innerHTML;
-    track.innerHTML = originalContent + originalContent;
+    const singleWidth = track.scrollWidth;
+    if (singleWidth === 0) return;
+    const containerWidth = track.parentElement ? track.parentElement.offsetWidth : window.innerWidth;
+    // Duplicate enough copies so the track is well wider than the viewport, then animate by singleWidth px
+    const copies = Math.max(Math.ceil((containerWidth * 2) / singleWidth) + 1, 4);
+    let html = '';
+    for (let i = 0; i < copies; i++) html += originalContent;
+    track.innerHTML = html;
+    track.style.setProperty('--marquee-dist', `-${singleWidth}px`);
   }
 
   /* ---- CART DRAWER ---- */

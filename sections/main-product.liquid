@@ -226,6 +226,22 @@
               </div>
             {%- endform -%}
 
+          {%- when 'trust_badges' -%}
+            <div class="product-trust" {{ block.shopify_attributes }}>
+              <div class="product-trust__item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                <span>{{ block.settings.badge_1 | default: 'Free Shipping' }}</span>
+              </div>
+              <div class="product-trust__item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                <span>{{ block.settings.badge_2 | default: '30-Day Guarantee' }}</span>
+              </div>
+              <div class="product-trust__item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>{{ block.settings.badge_3 | default: 'US-Formulated' }}</span>
+              </div>
+            </div>
+
           {%- when 'pickup_availability' -%}
             {%- assign pick_up_availabilities = current_variant.store_availabilities | where: 'pick_up_enabled', true -%}
             {%- if pick_up_availabilities.size > 0 -%}
@@ -335,6 +351,31 @@
         }
       ]
     },
+    {
+      "type": "trust_badges",
+      "name": "Trust badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_1",
+          "label": "Badge 1",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "badge_2",
+          "label": "Badge 2",
+          "default": "30-Day Guarantee"
+        },
+        {
+          "type": "text",
+          "id": "badge_3",
+          "label": "Badge 3",
+          "default": "US-Formulated"
+        }
+      ]
+    },
     { "type": "pickup_availability", "name": "Pickup availability", "limit": 1, "settings": [] },
     { "type": "description", "name": "Description", "limit": 1, "settings": [] },
     { "type": "share", "name": "Share", "limit": 1, "settings": [] },
@@ -377,6 +418,7 @@
       { "type": "variant_picker" },
       { "type": "quantity" },
       { "type": "buy_buttons" },
+      { "type": "trust_badges" },
       { "type": "pickup_availability" },
       { "type": "description" }
     ]

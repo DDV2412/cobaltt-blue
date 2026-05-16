@@ -188,7 +188,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .announce-track > span { display: inline-flex; align-items: center; gap: 12px; }
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(var(--marquee-dist, -50%)); }
 }
 
 /* ---- NAV ---- */
@@ -1682,6 +1682,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .product-add-wrap { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
 .product-add-btn { width: 100%; justify-content: center; padding: 20px; font-size: 15px; }
+.product-trust { display: flex; gap: 0; margin-bottom: 28px; border: 1px solid var(--line-soft); border-radius: var(--radius-md); overflow: hidden; }
+.product-trust__item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); border-right: 1px solid var(--line-soft); }
+.product-trust__item:last-child { border-right: none; }
+.product-trust__item svg { color: var(--blue); flex-shrink: 0; }
 
 /* Dynamic checkout "Buy it Now" button */
 .shopify-payment-button { width: 100%; }
